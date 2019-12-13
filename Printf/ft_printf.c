@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 17:39:22 by rvegas-j          #+#    #+#             */
-/*   Updated: 2019/12/12 20:21:50 by roy              ###   ########.fr       */
+/*   Updated: 2019/12/13 15:29:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_flag_activator(char r, char s, char t)
 		flags->minwidth = 1;
 	if (s > '0' && s <= '9' && r == '.')
 		flags->maxwidth = 1;
-
 }
 
 int		ft_string_trimmer(const char *s, va_list list)
