@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/15 12:49:54 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/15 15:01:21 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,18 @@ typedef struct		s_flags
 	int				minus;
 	int				minwidth;
 	int				minwidthbool;
-	int				dot;
 	int				precission;
+	int				precissionbool;
 	int				variable;
+	int				advance;
 }					t_flags;
 void	ft_putchar_fd(char c, int fd);
 int		ft_isdigit(int c);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_flagszero(t_flags *flags);
 int		ft_isvar(char c);
-int		ft_atoi(const char *str);
+int		ft_atoi(const char *s);
+int		ft_atoi_counter(int i);
+void	ft_flagsinit(t_flags *flags);
 
 #endif

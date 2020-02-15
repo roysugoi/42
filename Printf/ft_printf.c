@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/15 13:15:28 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/15 15:21:19 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,35 @@
 
 int		ft_printf_flags(const char *s, t_flags *flags)
 {
-	while (ft_isvar(*s))					//Mientras que no sea una variable...
+	if (*s == '-')
+		flags->minus = 1 && ++s;
+	if (*s == '0')
+		flags->zero = 1 && ++s;
+	while (ft_isdigit(*s))
 	{
-		if (*s == '-')
-			flags->minus = 1 && ++s;
-		if (*s == '0')
-			flags->zero = 1 && ++s;
-		if (ft_isdigit(*s - '0'))
-			flags->minwidthbool = 1;		//Alberto me comenta que conviene guardar el booleano de activación del flag pero conservar e valor del entero dentro también de la estrcutura, sabiendo que está activado y que es X.
-			flags->minwidth = ft_atoi(*s);
-			s = s + ft_counter_atoi(flags->minwidth);
-		if ()
+		flags->minwidth = flags->minwidth * 10 + (*s - '0');
+		flags->minwidthbool = 1;
 		++s;
 	}
+	if (*s == '.')
+		flags->precissionbool = 1 && ++s;
+	if (ft_isdigit(*s))
+		flags->precission = flags->precission * 10 + (*s - '0') && ++s;
 	return (0);
 }
 
 int		ft_printf_start(const char *s, t_flags *flags)
 {
-	char *a;
-
-	ft_flagsinit(&flags);
+	ft_flagsinit(flags);
 	while (*s != '\0')
 	{
 		if (*s != '%')
 			write(1, s, 1);
 		else
+		{
 			ft_printf_flags(++s, flags);
+			s = s + flags->advance;
+		}
 		s++;
 	}
 	return (0);
@@ -56,9 +58,10 @@ int		ft_printf(const char *s, ...)
 	if (!(flags = malloc(sizeof(*flags))))
 		return (-1);
 	va_start(flags->valist, s);
-	ft_flagszero(flags);
-	bytes = ft_printf_start(s, *flags);
+	ft_flagsinit(flags);
+	bytes = ft_printf_start(s, flags);
 	va_end(flags->valist);
+	printf("\nMinus flag: %i\nZero flag: %i\nMinWidth flag: %i\nMinWidth Bool Flag: %i\nPrecission Flag: %i\nPrecission Bool Flag: %i\n", flags->minus, flags->zero, flags->minwidth, flags->minwidthbool, flags->precission, flags->precissionbool);
 	free(flags);
 	return (bytes);
 }
@@ -66,10 +69,6 @@ int		ft_printf(const char *s, ...)
 int		main(void)
 {
 	char *s;
-	char *t;
-
 	s = "hola";
-	t = "y tal";
-	ft_printf("Pues %s mundo %s.", s, t);
-	ft_printf("\n");
+	ft_printf("Pues %04207.2s mundo.", s);
 }
