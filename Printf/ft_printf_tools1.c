@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:57:58 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/15 17:08:41 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/15 20:11:47 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int		ft_isvar(char c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' ||
 	c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
 void	ft_flagsinit(t_flags *flags)
@@ -44,16 +44,17 @@ void	ft_flagsinit(t_flags *flags)
 	flags->advance = 0;
 }
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, t_flags *flags)
 {
 	int	i;
 
 	i = 0;
-	if (s && fd)
+	if (s)
 	{
 		while (s[i] != '\0')
 		{
-			write(fd, &s[i], 1);
+			write(1, &s[i], 1);
+			flags->bytes++;
 			i++;
 		}
 	}
