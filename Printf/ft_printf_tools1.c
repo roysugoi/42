@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:57:58 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/15 15:30:46 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/15 15:45:25 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_flagsinit(t_flags *flags)
 	flags->precission = 0;
 	flags->precissionbool = 0;
 	flags->variable = 0;
+	flags->advance = 0;
 }
 
 void	ft_putstr_fd(char *s, int fd)
@@ -80,29 +81,4 @@ int		ft_atoi_counter(int i)
 		j++;
 	j++;
 	return (j);
-}
-
-int		ft_advance(t_flags *flags)
-{
-	int i;
-
-	i = 0;
-	if (flags->zero == 1)
-		i++;
-	if (flags->minus == 1)
-		i++;
-	if (flags->minwidthbool == 1)
-		{
-		while (flags->minwidth / 10 > 1)
-			i++;
-		i++;
-		}
-	if (flags->precissionbool == 1)
-		{
-		while (flags->precission / 10 > 1)
-			i++;
-		i = i + 2;
-		}
-	i++;
-	return (i);	
 }
