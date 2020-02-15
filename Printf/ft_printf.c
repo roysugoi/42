@@ -6,33 +6,33 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/15 20:49:44 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/15 21:23:48 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 
-int		ft_printf_var(const char *s, t_flags *flags)
+int		ft_printf_var(const char *s, t_flags *flags) //ME HE QUEDADO EN QUE NO SE COMO AVANZAR 1 DESPUÉS DE IMPRIMIR EN LA FUNCIÓN CORRESPONDIENTE.
 {
-	if (*s == 'c')
-		ft_printf_c(s, flags);
+	//if (*s == 'c')
+	//	ft_printf_c(s, flags);
 	if (*s == 's')
 		ft_printf_s(s, flags);
-	if (*s == 'p')
-		ft_printf_p(s, flags);
-	if (*s == 'd')
-		ft_printf_d(s, flags);
-	if (*s == 'i')
-		ft_printf_i(s, flags);
-	if (*s == 'u')
-		ft_printf_u(s, flags);
-	if (*s == 'x')
-		ft_printf_x(s, flags);
-	if (*s == 'X')
-		ft_printf_X(s, flags);
-	if (*s == '%')
-		ft_printf_percent(s, flags);
+	//if (*s == 'p')
+	//	ft_printf_p(s, flags);
+	//if (*s == 'd')
+	//	ft_printf_d(s, flags);
+	//if (*s == 'i')
+	//	ft_printf_i(s, flags);
+	//if (*s == 'u')
+	//	ft_printf_u(s, flags);
+	//if (*s == 'x')
+	//	ft_printf_x(s, flags);
+	//if (*s == 'X')
+	//	ft_printf_X(s, flags);
+	//if (*s == '%')
+	//	ft_printf_percent(s, flags);
 	return (0);
 }
 
