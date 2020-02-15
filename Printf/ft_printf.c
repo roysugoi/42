@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/15 20:35:48 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/15 20:49:44 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,24 @@
 
 int		ft_printf_var(const char *s, t_flags *flags)
 {
+	if (*s == 'c')
+		ft_printf_c(s, flags);
 	if (*s == 's')
-	{
-		ft_putstr_fd(va_arg(flags->valist, char*), flags);
-		flags->advance++;
-	}
+		ft_printf_s(s, flags);
+	if (*s == 'p')
+		ft_printf_p(s, flags);
+	if (*s == 'd')
+		ft_printf_d(s, flags);
+	if (*s == 'i')
+		ft_printf_i(s, flags);
+	if (*s == 'u')
+		ft_printf_u(s, flags);
+	if (*s == 'x')
+		ft_printf_x(s, flags);
+	if (*s == 'X')
+		ft_printf_X(s, flags);
+	if (*s == '%')
+		ft_printf_percent(s, flags);
 	return (0);
 }
 
