@@ -1,11 +1,12 @@
-CC		= gcc
-FLAGS	= -Wall -Wextra -Werror
-ITEMS	= *.c
-RUNNER	= ./a.out
-CLEAR	= clear
-CLEANER	= rm -f *.out *.o
+COMPIL = gcc -Wall -Wextra -Werror *.c
+CLEAR  = clear
+RUNNER = ./a.out
+CLEAN  = rm -f *.out *.o
 
 all:
-		${CC} ${FLAGS} ${ITEMS}
+		${COMPIL}
 		${CLEAR}
 		${RUNNER}
+		${CLEAN}
+
+.PHONY:		all 

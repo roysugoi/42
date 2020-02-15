@@ -3,63 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/03 17:39:22 by rvegas-j          #+#    #+#             */
-/*   Updated: 2019/12/13 16:04:56 by roy              ###   ########.fr       */
+/*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
+/*   Updated: 2020/02/12 18:57:02 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_flag_activator(char r, char s, char t)
+int		ft_printf_flags(const char *s, t_flags *flags)
 {
-	t_flags	*flags;
+	int	counter;
 
-	flags = 0;
-	t_flags_init(flags);
-	if (s == '-')
-		flags->minus = 1;
-	if (s == '*' && t == '.')
-		flags->asterisk1 = 1;
-	if (s == '.')
-		flags->dot = 1;
-	if (s == '*' && t != '.')
-		flags->asterisk2 = 1;
-	if (s > '0' && s <= '9' && r != '.')
-		flags->minwidth = 1;
-	if (s > '0' && s <= '9' && r == '.')
-		flags->maxwidth = 1;
+	counter = 0;
+	while (ft_isvar(*s))
+	{
+		if (*++s == '0')
+			flags->zero = 1;
+		if (*++s == '-')
+			flags->minus = 1;
+		if (ft_isdigit((int)*++s))
+			flags->minwidth = 1;		//Alberto me comenta que conviene guardar el booleano de activación del flag pero conservar e valor del entero dentro también de la estrcutura, sabiendo que está activado y que es X.
+		if ()
+	}
+	return (0);
 }
 
-int		ft_string_trimmer(const char *s, va_list list)
+int		ft_printf_start(const char *s, t_flags *flags)
 {
-	int	i;
+	char *a;
 
-	i = 0;
-	while (s[i] != '\0')
+	ft_flagsinit(&flags);
+	while (*s != '\0')
 	{
-		if (s[i] != '%')
-			ft_putchar(s[i]);
-		else	
-		{
-			++i;
-			if (s[i] == 's')
-				ft_putstr(va_arg(list, char*));
-		}
-		i++;
+		if (*s != '%')
+			write(1, s, 1);
+		else
+			ft_printf_flags(s, flags);
+		s++;
 	}
 	return (0);
 }
 
 int		ft_printf(const char *s, ...)
 {
-	va_list	list;
-	
-	va_start(list, s);
+	t_flags	*flags;
+	int		bytes;
+
 	if (!s)
 		return (0);
-	ft_string_trimmer(s, list);
-	va_end(list);
-	return (1);
+	if (!(flags = malloc(sizeof(*flags))))
+		return (-1);
+	va_start(flags->valist, s);
+	ft_flagszero(flags);
+	bytes = ft_printf_start(s, *flags);
+	va_end(flags->valist);
+	free(flags);
+	return (bytes);
+}
+
+int		main(void)
+{
+	char *s;
+	char *t;
+
+	s = "hola";
+	t = "y tal";
+	ft_printf("Pues %s mundo %s.", s, t);
+	ft_printf("\n");
 }

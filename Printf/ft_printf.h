@@ -3,39 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/03 17:50:25 by rvegas-j          #+#    #+#             */
-/*   Updated: 2019/12/12 19:54:19 by roy              ###   ########.fr       */
+/*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
+/*   Updated: 2020/02/12 18:55:29 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef _FT_PRINTF_H
+# define _FT_PRINTF_H
+# include "unistd.h"
+# include "stdlib.h"
+# include "stdio.h"
+# include "stdarg.h"
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-typedef	struct	s_flags
+typedef struct		s_flags
 {
-	int			minus;
-	int			zero;
-	int			minwidth;
-	int			asterisk1;
-	int			dot;
-	int			maxwidth;
-	int			asterisk2;
-	char		variable;
-	va_list		args;
-}				t_flags;
-
-int		ft_printf(const char *format, ...);
-void	t_flags_init(t_flags *flag);
-void	ft_putstr(char const *s);
-int		ft_atoi(const char *str);
-int		ft_isvar(char s);
-void	ft_putchar(char c);
+	va_list			valist;
+	int				zero;
+	int				minus;
+	int				minwidth;
+	int				minwidthbool;
+	int				dot;
+	int				precission;
+	int				variable;
+}					t_flags;
+void	ft_putchar_fd(char c, int fd);
+int		ft_isdigit(int c);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_flagszero(t_flags *flags);
 
 #endif
