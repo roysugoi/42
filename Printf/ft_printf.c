@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/12 18:57:02 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/15 13:15:28 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int		ft_printf_flags(const char *s, t_flags *flags)
 {
-	int	counter;
-
-	counter = 0;
-	while (ft_isvar(*s))
+	while (ft_isvar(*s))					//Mientras que no sea una variable...
 	{
-		if (*++s == '0')
-			flags->zero = 1;
-		if (*++s == '-')
-			flags->minus = 1;
-		if (ft_isdigit((int)*++s))
-			flags->minwidth = 1;		//Alberto me comenta que conviene guardar el booleano de activación del flag pero conservar e valor del entero dentro también de la estrcutura, sabiendo que está activado y que es X.
+		if (*s == '-')
+			flags->minus = 1 && ++s;
+		if (*s == '0')
+			flags->zero = 1 && ++s;
+		if (ft_isdigit(*s - '0'))
+			flags->minwidthbool = 1;		//Alberto me comenta que conviene guardar el booleano de activación del flag pero conservar e valor del entero dentro también de la estrcutura, sabiendo que está activado y que es X.
+			flags->minwidth = ft_atoi(*s);
+			s = s + ft_counter_atoi(flags->minwidth);
 		if ()
+		++s;
 	}
 	return (0);
 }
@@ -40,7 +40,7 @@ int		ft_printf_start(const char *s, t_flags *flags)
 		if (*s != '%')
 			write(1, s, 1);
 		else
-			ft_printf_flags(s, flags);
+			ft_printf_flags(++s, flags);
 		s++;
 	}
 	return (0);

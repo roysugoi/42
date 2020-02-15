@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_tools1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:57:58 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/12 18:56:09 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/15 13:16:24 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,19 @@ void	ft_putstr_fd(char *s, int fd)
 			i++;
 		}
 	}
+}
+
+int	ft_atoi(const char *str)
+{
+	int					i;
+	unsigned long long	n;
+
+	i = 0;
+	n = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		n = n * 10 + str[i] - '0';
+		i++;
+	}
+	return (n);
 }
