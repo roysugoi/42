@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:43:42 by roy               #+#    #+#             */
-/*   Updated: 2020/02/15 21:21:40 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/16 02:09:08 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 }
 */
-void	ft_printf_s(const char *s, t_flags *flags)
+void	ft_printf_s(t_flags *flags)
 {
 	ft_putstr_fd(va_arg(flags->valist, char*), flags);
 }

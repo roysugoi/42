@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/15 21:23:48 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/16 02:08:35 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_printf_var(const char *s, t_flags *flags) //ME HE QUEDADO EN QUE NO SE C
 	//if (*s == 'c')
 	//	ft_printf_c(s, flags);
 	if (*s == 's')
-		ft_printf_s(s, flags);
+		ft_printf_s(flags);
 	//if (*s == 'p')
 	//	ft_printf_p(s, flags);
 	//if (*s == 'd')
@@ -33,6 +33,7 @@ int		ft_printf_var(const char *s, t_flags *flags) //ME HE QUEDADO EN QUE NO SE C
 	//	ft_printf_X(s, flags);
 	//if (*s == '%')
 	//	ft_printf_percent(s, flags);
+	++s;
 	return (0);
 }
 
@@ -77,7 +78,7 @@ int		ft_printf_start(const char *s, t_flags *flags)
 		{
 			flags->advance++;
 			ft_printf_flags(s, flags);
-			s = s + flags->advance - 1;			
+			s = s + flags->advance;			
 			//printf("\nMinus flag: %i\nZero flag: %i\nMinWidth flag: %i\nMinWidth Bool: %i\nPrecission Flag: %i\nPrecission Bool: %i\nAdvance: %i\n", flags->minus, flags->zero, flags->minwidth, flags->minwidthbool, flags->precission, flags->precissionbool, flags->advance);
 			ft_flagsinit(flags);
 		}

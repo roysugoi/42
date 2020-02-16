@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/15 21:15:47 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/16 02:06:33 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_atoi(const char *s);
 int		ft_atoi_counter(int i);
 void	ft_flagsinit(t_flags *flags);
 //int		ft_printf_c(const char *s, t_flags *flags);
-int		ft_printf_s(const char *s, t_flags *flags);
+void		ft_printf_s(t_flags *flags);
 //int		ft_printf_p(const char *s, t_flags *flags);
 //int		ft_printf_d(const char *s, t_flags *flags);
 //int		ft_printf_i(const char *s, t_flags *flags);
