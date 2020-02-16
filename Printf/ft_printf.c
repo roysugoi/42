@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/16 02:08:35 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/16 02:32:10 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		ft_printf_var(const char *s, t_flags *flags) //ME HE QUEDADO EN QUE NO SE C
 	return (0);
 }
 
-int		ft_printf_flags(const char *s, t_flags *flags)
+int		ft_printf_flags(const char *s, t_flags *flags)				//FALTAN ASTERISK
 {
 	s++;
 	if (*s == '-')
@@ -100,7 +100,7 @@ int		ft_printf(const char *s, ...)
 	ft_flagsinit(flags);
 	bytes = ft_printf_start(s, flags);
 	va_end(flags->valist);
-	printf("\nBytes: %i\n", flags->bytes);
+	printf("\n\nBytes: %i\n", flags->bytes);
 	free(flags);
 	return (bytes);
 }
@@ -112,5 +112,10 @@ int		main(void)
 	
 	s = "hola";
 	t = "y tal";
-	ft_printf("Pues %042.22s mundo %.3s y cual.", s, t);
+	printf("\nResultado printf:\n");
+	printf("Pues %-6.2s mundo %.3s y cual.", s, t);
+	printf("\n");
+	printf("\nResultado ft_printf:\n");
+	ft_printf("Pues %-6.2s mundo %.3s y cual.", s, t);
+	printf("\n");
 }
