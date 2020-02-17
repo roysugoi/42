@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/17 21:05:37 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/17 21:52:44 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void	ft_printf_flags(const char *s, t_flags *flags)
 		flags->minus = 1 && ++s && flags->adv++;
 	if (*s == '0')
 		flags->zero = 1 && ++s && flags->adv++;
-	if ((*s == '*') ? flags->width = va_arg(flags->valist, int) : 0)
+	if (*s == '*')
 	{
+		flags->width = va_arg(flags->valist, int);
 		flags->widthbool = 1 && ++s && flags->adv++;
 		if ((flags->width < 0) ? flags->width = flags->width * -1 : 0)
 			flags->minus = 1;
@@ -44,9 +45,8 @@ void	ft_printf_flags(const char *s, t_flags *flags)
 	while (ft_isdigit(*s))
 	{
 		flags->preci = flags->preci * 10 + (*s - '0');
-		++s && flags->adv++;
+		++s && flags->adv++ && ft_printf_var(s, flags);
 	}
-	ft_printf_var(s, flags);
 }
 
 int		ft_printf_start(const char *s, t_flags *flags)
@@ -96,12 +96,10 @@ int		main(void)
 
 	s = "hola";
 	t = "cruel";
-	printf("\033[1;35m");
 	printf("Resultado printf:\n");
-	printf("Pues %*.2s mundo.", -6, s);
-	printf("\033[0m");
+	printf("Pues %*.2s mundo.", 0, s);
 	printf("\n");
 	printf("\nResultado ft_printf:\n");
-	ft_printf("Pues %*.2s mundo.", -6, s);
+	ft_printf("Pues %*.2s mundo %62.13s.", 0, s, s);
 	printf("\n");
 }
