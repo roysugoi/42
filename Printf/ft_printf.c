@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/17 19:13:08 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/17 21:05:37 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,59 +20,33 @@ int		ft_printf_var(const char *s, t_flags *flags)
 	return (0);
 }
 
-int		ft_printf_flags(const char *s, t_flags *flags)
+void	ft_printf_flags(const char *s, t_flags *flags)
 {
-	s++;
-	if (*s == '-')
-	{
-		flags->minus = 1;
-		++s;
-		flags->advance++;
-	}
+	if (*++s == '-')
+		flags->minus = 1 && ++s && flags->adv++;
 	if (*s == '0')
+		flags->zero = 1 && ++s && flags->adv++;
+	if ((*s == '*') ? flags->width = va_arg(flags->valist, int) : 0)
 	{
-		flags->zero = 1;
-		++s;
-		flags->advance++;
-	}
-	if (*s == '*')
-	{
-		flags->minwidth = va_arg(flags->valist, int);
-		++s;
-		flags->advance++;
-		if (flags->minwidth < 0)
-		{
-			flags->minwidth = flags->minwidth * -1;
+		flags->widthbool = 1 && ++s && flags->adv++;
+		if ((flags->width < 0) ? flags->width = flags->width * -1 : 0)
 			flags->minus = 1;
-		}
 	}
 	while (ft_isdigit(*s))
 	{
-		flags->minwidth = flags->minwidth * 10 + (*s - '0');
-		flags->minwidthbool = 1;
-		++s;
-		flags->advance++;
+		flags->width = flags->width * 10 + (*s - '0');
+		flags->widthbool = 1 && ++s && flags->adv++;
 	}
 	if (*s == '.')
-	{
-		flags->precissionbool = 1;
-		flags->advance++;
-		++s;
-	}
+		flags->precibool = 1 && ++s && flags->adv++;
 	if (*s == '*')
-	{
-		flags->precission = va_arg(flags->valist, int);
-		++s;
-		flags->advance++;
-	}
+		flags->preci = va_arg(flags->valist, int) && ++s && flags->adv++;
 	while (ft_isdigit(*s))
 	{
-		flags->precission = flags->precission * 10 + (*s - '0');
-		++s && flags->advance++;
+		flags->preci = flags->preci * 10 + (*s - '0');
+		++s && flags->adv++;
 	}
-	if (ft_isvar(*s))
-		ft_printf_var(s, flags);
-	return (0);
+	ft_printf_var(s, flags);
 }
 
 int		ft_printf_start(const char *s, t_flags *flags)
@@ -87,10 +61,9 @@ int		ft_printf_start(const char *s, t_flags *flags)
 		}
 		else
 		{
-			flags->advance++;
+			flags->adv++;
 			ft_printf_flags(s, flags);
-			s = s + flags->advance;
-			//printf("\n\nMinus flag: %i\nZero flag: %i\nMinWidth flag: %i\nMinWidth Bool: %i\nPrecission Flag: %i\nPrecission Bool: %i\nAdvance: %i\n", flags->minus, flags->zero, flags->minwidth, flags->minwidthbool, flags->precission, flags->precissionbool, flags->advance);
+			s = s + flags->adv;
 			ft_flagsinit(flags);
 		}
 		s++;
@@ -119,8 +92,10 @@ int		ft_printf(const char *s, ...)
 int		main(void)
 {
 	char *s;
+	char *t;
 
 	s = "hola";
+	t = "cruel";
 	printf("\033[1;35m");
 	printf("Resultado printf:\n");
 	printf("Pues %*.2s mundo.", -6, s);

@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/17 18:29:00 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/17 19:33:44 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ typedef struct		s_flags
 	va_list			valist;
 	int				zero;
 	int				minus;
-	int				minwidth;
-	int				minwidthbool;
-	int				precission;
-	int				precissionbool;
+	int				width;
+	int				widthbool;
+	int				preci;
+	int				precibool;
 	int				variable;
-	int				advance;
+	int				adv;
 	int				bytes;
 }					t_flags;
 void	ft_putchar_fd(char c, int fd);

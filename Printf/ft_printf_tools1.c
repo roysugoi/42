@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:57:58 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/17 18:37:18 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/17 19:33:54 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	ft_flagsinit(t_flags *flags)
 {
 	flags->zero = 0;
 	flags->minus = 0;
-	flags->minwidth = 0;
-	flags->minwidthbool = 0;
-	flags->precission = 0;
-	flags->precissionbool = 0;
+	flags->width = 0;
+	flags->widthbool = 0;
+	flags->preci = 0;
+	flags->precibool = 0;
 	flags->variable = 0;
-	flags->advance = 0;
+	flags->adv = 0;
 }
 
 void	ft_putstr_fd(char *s, t_flags *flags)
