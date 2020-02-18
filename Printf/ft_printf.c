@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/18 19:12:03 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/18 19:46:18 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int		ft_printf_start(const char *s, t_flags *flags)
 		{
 			flags->adv++;
 			ft_printf_flags(s, flags);
+			//printf("\n\nMinus flag: %i\nZero flag: %i\nWidth: %i\nWidthBool: %i\nPreci: %i\nPreciBool: %i\nAdvance: %i\n", flags->minus, flags->zero, flags->width, flags->widthbool, flags->preci, flags->precibool, flags->adv);
 			s = s + flags->adv;
 		}
 		s++;
@@ -98,3 +99,5 @@ int		main(void)
 	//printf("%s|%-s|%23s|%.5s|%.50s|%-23s|%-.5s|%-.50s|%23.5s|%23.50s|%-23.5s|%-23.50s", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	ft_printf("%s|%-s|%23s|%.5s|%.50s|%-23s|%-.5s|%-.50s|%23.5s|%23.50s|%-23.5s|%-23.50s", NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 }
+
+//NO COGE BIEN LOS FLAGS
