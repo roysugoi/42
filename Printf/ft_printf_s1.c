@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_s1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:43:42 by roy               #+#    #+#             */
-/*   Updated: 2020/02/18 03:15:10 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 19:13:54 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ void	ft_printf_s(t_flags *flags)
 {
 	int		i;
 	char	*s;
-	
+
 	i = 0;
-	s = ft_strdup(va_arg(flags->valist, char*));
+	if (!(s = va_arg(flags->valist, char*)))
+		s = ft_strdup("(null)");
+	if (s == NULL)
+		flags->length = 0;
 	flags->length = ft_strlen(s);
 	if (flags->minus == 1 && flags->zero == 1)
-		flags->zero = 0;	//RETORNO -1 O APAGO EL FLAG? CREO QUE MEJOR APAGAR EL FLAG PORQUE ES WARNING
+		flags->zero = 0;
 	if (flags->minus == 0 && flags->zero == 0)
 		ft_printf_s1(flags, s, i);
 	if (flags->minus == 1 && flags->zero == 0)
@@ -30,7 +33,7 @@ void	ft_printf_s(t_flags *flags)
 		ft_printf_s1(flags, s, i);
 }
 
-void	ft_printf_s1(t_flags *flags, char * s, int i)
+void	ft_printf_s1(t_flags *flags, char *s, int i)
 {
 	if (flags->preci < 0)
 		flags->preci = (flags->preci * -1);
@@ -56,7 +59,7 @@ void	ft_printf_s1(t_flags *flags, char * s, int i)
 		ft_putstr_a(s, flags);
 }
 
-void	ft_printf_s2(t_flags *flags, char * s, int i)
+void	ft_printf_s2(t_flags *flags, char *s, int i)
 {
 	if (flags->widthbool == 1 && flags->precibool == 1)
 	{

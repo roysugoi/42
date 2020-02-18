@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_tools2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:44:55 by roy               #+#    #+#             */
-/*   Updated: 2020/02/18 02:47:39 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 19:12:45 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int		ft_atoi(const char *str)
 
 size_t	ft_strlen(const char *str)
 {
-    int    size;
-    
-    size = 0;
-    while (str[size] != '\0')
-    {
-        size += 1;
-    }
-    return (size);
+	int	size;
+
+	size = 0;
+	while (str[size] != '\0')
+	{
+		size += 1;
+	}
+	return (size);
 }
 
 char	*ft_strdup(const char *s)
