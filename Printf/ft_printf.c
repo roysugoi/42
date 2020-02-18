@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/18 02:45:07 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 03:02:53 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ void	ft_printf_flags(const char *s, t_flags *flags)
 	{
 		flags->width = va_arg(flags->valist, int);
 		flags->widthbool = 1 && ++s && flags->adv++;
-		if (flags->width < 0 ? (flags->width = flags->width * -1) : 0)
+		if (flags->width < 0)
+		{
+			flags->width = flags->width * -1;
 			flags->minus = 1;
+		}
 	}
 	while (ft_isdigit(*s))
 	{
@@ -41,7 +44,7 @@ void	ft_printf_flags(const char *s, t_flags *flags)
 	if (*s == '.')
 		flags->precibool = 1 && ++s && flags->adv++;
 	if (*s == '*')
-		flags->preci = va_arg(flags->valist, int) && ++s && flags->adv++;
+		(flags->preci = va_arg(flags->valist, int)) && ++s && flags->adv++;
 	while (ft_isdigit(*s))
 	{
 		flags->preci = flags->preci * 10 + (*s - '0');
@@ -97,9 +100,12 @@ int		main(void)
 
 	s = "hola";
 	printf("Resultado printf:\n");
-	printf("Pues %0s mundo.", s);
+	printf("Pues %*s mundo.", 2, s);
 	printf("\n");
 	printf("\nResultado ft_printf:\n");
-	ft_printf("Pues %0s mundo.", s);
+	ft_printf("Pues %*s mundo.", 2, s);
 	printf("\n");
 }
+
+
+//SI PONGO ASTERISCOS Y NO PONGO UN ARGUMENTO, PROTEGER.

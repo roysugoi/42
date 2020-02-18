@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:43:42 by roy               #+#    #+#             */
-/*   Updated: 2020/02/18 02:46:17 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 03:01:51 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	ft_printf_s(t_flags *flags)
 
 void	ft_printf_s1(t_flags *flags, char * s, int i)
 {
+	if (flags->preci < 0)
+		flags->preci = (flags->preci * -1);
+	if (flags->preci > flags->length)
+		flags->preci = flags->length;
 	if (flags->widthbool == 1 && flags->precibool == 1)
 	{
 		if (flags->preci > flags->length)
@@ -41,11 +45,7 @@ void	ft_printf_s1(t_flags *flags, char * s, int i)
 		ft_putstr_b(s, flags, (flags->width - i));
 	}
 	if (flags->widthbool == 0 && flags->precibool == 1)
-	{
-		if (flags->preci > flags->length)
-			flags->preci = flags->length;
 		ft_putstr_b(s, flags, flags->preci);
-	}
 	if (flags->widthbool == 1 && flags->precibool == 0)
 	{
 		i = flags->width - flags->length;
