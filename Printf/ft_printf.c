@@ -6,13 +6,13 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/18 01:41:09 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 02:45:07 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf_var(const char *s, t_flags *flags)
+int		ft_printf_types(const char *s, t_flags *flags)
 {
 	if (*s == 's')
 		ft_printf_s(flags);
@@ -48,7 +48,7 @@ void	ft_printf_flags(const char *s, t_flags *flags)
 		++s;
 		flags->adv++;
 	}
-	ft_printf_var(s, flags);
+	ft_printf_types(s, flags);
 }
 
 int		ft_printf_start(const char *s, t_flags *flags)
@@ -97,9 +97,9 @@ int		main(void)
 
 	s = "hola";
 	printf("Resultado printf:\n");
-	printf("Pues %s mundo.", s);
+	printf("Pues %0s mundo.", s);
 	printf("\n");
 	printf("\nResultado ft_printf:\n");
-	ft_printf("Pues %s mundo.", s);
+	ft_printf("Pues %0s mundo.", s);
 	printf("\n");
 }

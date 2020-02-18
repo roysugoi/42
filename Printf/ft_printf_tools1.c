@@ -6,31 +6,11 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:57:58 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/18 00:29:09 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 02:47:20 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-int		ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int		ft_isvar(char c)
-{
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' ||
-	c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (1);
-	return (0);
-}
 
 void	ft_flagsinit(t_flags *flags)
 {
@@ -85,4 +65,9 @@ void	ft_putblank(int i)
 		write(1, " ", 1);
 		i--;
 	}
+}
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
 }

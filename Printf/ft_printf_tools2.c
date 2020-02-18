@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:44:55 by roy               #+#    #+#             */
-/*   Updated: 2020/02/18 00:31:42 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 02:47:39 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,7 @@ int		ft_atoi(const char *str)
 	return (n);
 }
 
-int		ft_atoi_counter(int i)
-{
-	int j;
-
-	j = 0;
-	while (i / 10 >= 1)
-		j++;
-	j++;
-	return (j);
-}
-
-size_t    ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
     int    size;
     
@@ -67,4 +56,19 @@ char	*ft_strdup(const char *s)
 	}
 	aux[i] = '\0';
 	return (aux);
+}
+
+int		ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int		ft_isvar(char c)
+{
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' ||
+	c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
+		return (1);
+	return (0);
 }

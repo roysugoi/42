@@ -1,4 +1,4 @@
-COMPIL	= gcc -Wall -Wextra -Werror *.c
+COMPIL	= gcc -Wall -Wextra *.c
 CLEAR	= clear
 RUNNER	= ./a.out
 CLEAN	= rm -f *.out *.o

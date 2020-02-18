@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/18 00:45:07 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 02:48:00 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	ft_putblank(int i);
 void	ft_flagszero(t_flags *flags);
 int		ft_isvar(char c);
 int		ft_atoi(const char *s);
-int		ft_atoi_counter(int i);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s);
 void	ft_flagsinit(t_flags *flags);
 void	ft_printf_s(t_flags *flags);
-void	ft_printf_s1(t_flags *flags, char * s, int i, int j);
+void	ft_printf_s1(t_flags *flags, char * s, int i);
+void	ft_printf_s2(t_flags *flags, char * s, int i);
 
 #endif
