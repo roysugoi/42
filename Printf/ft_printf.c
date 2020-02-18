@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/18 03:02:53 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 03:17:49 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,19 @@ int		main(void)
 	char *s;
 
 	s = "hola";
-	printf("Resultado printf:\n");
-	printf("Pues %*s mundo.", 2, s);
+
+	printf("\n\n");
+	printf("\nReturn printf: %d", printf("Pues %*.1s mundo.", 2, s));
+
+	
+	printf("\n\nResultado printf:\n");
+	printf("Pues %*.*s mundo.", 20, 15, s);
 	printf("\n");
 	printf("\nResultado ft_printf:\n");
-	ft_printf("Pues %*s mundo.", 2, s);
+	ft_printf("Pues %*.*s mundo.", 20, 15, s);
 	printf("\n");
 }
 
 
 //SI PONGO ASTERISCOS Y NO PONGO UN ARGUMENTO, PROTEGER.
+//REPASAR BYTES ESCRITOS.
