@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/18 01:13:38 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 01:41:09 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		ft_printf_var(const char *s, t_flags *flags)
 {
-	flags->adv++;
 	if (*s == 's')
 		ft_printf_s(flags);
 	++s;
@@ -46,8 +45,10 @@ void	ft_printf_flags(const char *s, t_flags *flags)
 	while (ft_isdigit(*s))
 	{
 		flags->preci = flags->preci * 10 + (*s - '0');
-		ft_printf_var(++s, flags);
+		++s;
+		flags->adv++;
 	}
+	ft_printf_var(s, flags);
 }
 
 int		ft_printf_start(const char *s, t_flags *flags)
@@ -65,7 +66,7 @@ int		ft_printf_start(const char *s, t_flags *flags)
 			flags->adv++;
 			ft_printf_flags(s, flags);
 			s = s + flags->adv;
-			printf("\n\nMinus flag: %i\nZero flag: %i\nWidth: %i\nWidthBool: %i\nPreci: %i\nPreciBool: %i\nAdvance: %i\n", flags->minus, flags->zero, flags->width, flags->widthbool, flags->preci, flags->precibool, flags->adv);ft_flagsinit(flags);
+			//printf("\n\nMinus flag: %i\nZero flag: %i\nWidth: %i\nWidthBool: %i\nPreci: %i\nPreciBool: %i\nAdvance: %i\n", flags->minus, flags->zero, flags->width, flags->widthbool, flags->preci, flags->precibool, flags->adv);ft_flagsinit(flags);
 		}
 		s++;
 	}
@@ -96,9 +97,9 @@ int		main(void)
 
 	s = "hola";
 	printf("Resultado printf:\n");
-	printf("Pues %8s mundo.", s);
+	printf("Pues %s mundo.", s);
 	printf("\n");
 	printf("\nResultado ft_printf:\n");
-	ft_printf("Pues %8s mundo.", s);
+	ft_printf("Pues %s mundo.", s);
 	printf("\n");
 }
