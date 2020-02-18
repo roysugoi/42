@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/17 23:07:51 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/18 01:13:38 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ft_printf_start(const char *s, t_flags *flags)
 			flags->adv++;
 			ft_printf_flags(s, flags);
 			s = s + flags->adv;
-			ft_flagsinit(flags);
+			printf("\n\nMinus flag: %i\nZero flag: %i\nWidth: %i\nWidthBool: %i\nPreci: %i\nPreciBool: %i\nAdvance: %i\n", flags->minus, flags->zero, flags->width, flags->widthbool, flags->preci, flags->precibool, flags->adv);ft_flagsinit(flags);
 		}
 		s++;
 	}
@@ -96,9 +96,9 @@ int		main(void)
 
 	s = "hola";
 	printf("Resultado printf:\n");
-	printf("Pues %*.2s mundo %62.13s.", 0, s, s);
+	printf("Pues %8s mundo.", s);
 	printf("\n");
 	printf("\nResultado ft_printf:\n");
-	ft_printf("Pues %*.2s mundo %62.13s.", 0, s, s);
+	ft_printf("Pues %8s mundo.", s);
 	printf("\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_tools2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:44:55 by roy               #+#    #+#             */
-/*   Updated: 2020/02/17 19:33:55 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/18 00:31:42 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,35 @@ int		ft_atoi_counter(int i)
 		j++;
 	j++;
 	return (j);
+}
+
+size_t    ft_strlen(const char *str)
+{
+    int    size;
+    
+    size = 0;
+    while (str[size] != '\0')
+    {
+        size += 1;
+    }
+    return (size);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char			*aux;
+	unsigned long	i;
+	unsigned long	len;
+
+	i = 0;
+	len = ft_strlen(s);
+	if (!(aux = (char *)malloc(sizeof(*aux) * (len + 1))))
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		aux[i] = s[i];
+		i++;
+	}
+	aux[i] = '\0';
+	return (aux);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/17 19:33:44 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/18 00:45:07 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,23 @@ typedef struct		s_flags
 	int				preci;
 	int				precibool;
 	int				variable;
+	int				length;
 	int				adv;
 	int				bytes;
 }					t_flags;
 void	ft_putchar_fd(char c, int fd);
 int		ft_isdigit(int c);
-void	ft_putstr_fd(char *s, t_flags *flags);
+void	ft_putstr_a(char *s, t_flags *flags);
+void	ft_putstr_b(char *s, t_flags *flags, int j);
+void	ft_putblank(int i);
 void	ft_flagszero(t_flags *flags);
 int		ft_isvar(char c);
 int		ft_atoi(const char *s);
 int		ft_atoi_counter(int i);
+size_t	ft_strlen(const char *str);
+char	*ft_strdup(const char *s);
 void	ft_flagsinit(t_flags *flags);
-//int		ft_printf_c(const char *s, t_flags *flags);
-void		ft_printf_s(t_flags *flags);
-//int		ft_printf_p(const char *s, t_flags *flags);
-//int		ft_printf_d(const char *s, t_flags *flags);
-//int		ft_printf_i(const char *s, t_flags *flags);
-//int		ft_printf_u(const char *s, t_flags *flags);
-//int		ft_printf_x(const char *s, t_flags *flags);
-//int		ft_printf_X(const char *s, t_flags *flags);
-//int		ft_printf_percent(const char *s, t_flags *flags);
+void	ft_printf_s(t_flags *flags);
+void	ft_printf_s1(t_flags *flags, char * s, int i, int j);
 
 #endif
