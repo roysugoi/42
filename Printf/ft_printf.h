@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/18 03:14:54 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/19 01:28:40 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct		s_flags
 int		ft_isdigit(int c);
 void	ft_putstr_a(char *s, t_flags *flags);
 void	ft_putstr_b(char *s, t_flags *flags, int j);
-void	ft_putblank(int i);
+void	ft_putblank(int i, t_flags *flags);
 void	ft_flagszero(t_flags *flags);
 int		ft_isvar(char c);
 int		ft_atoi(const char *s);

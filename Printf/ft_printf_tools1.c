@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:57:58 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/18 03:16:52 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/19 01:28:28 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ void	ft_putstr_b(char *s, t_flags *flags, int j)
 	}
 }
 
-void	ft_putblank(int i)
+void	ft_putblank(int i, t_flags *flags)
 {
 	while (i > 0)
 	{
 		write(1, " ", 1);
+		flags->bytes++;
 		i--;
 	}
 }
