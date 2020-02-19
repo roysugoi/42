@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/19 01:30:47 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/19 02:23:33 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_printf_types(const char *s, t_flags *flags)
 
 void	ft_printf_flags(const char *s, t_flags *flags)
 {
-	if (*++s == '-')
+	if (*s == '-')
 		flags->minus = 1 && ++s && flags->adv++;
 	if (*s == '0')
 		flags->zero = 1 && ++s && flags->adv++;
@@ -69,7 +69,8 @@ int		ft_printf_start(const char *s, t_flags *flags)
 			flags->adv++;
 			ft_printf_flags(s, flags);
 			s = s + flags->adv;
-			printf("\n\nMinus flag: %i\nZero flag: %i\nWidth: %i\nWidthBool: %i\nPreci: %i\nPreciBool: %i\nAdvance: %i\n", flags->minus, flags->zero, flags->width, flags->widthbool, flags->preci, flags->precibool, flags->adv);ft_flagsinit(flags);
+			//printf("\n\nMinus flag: %i\nZero flag: %i\nWidth: %i\nWidthBool: %i\nPreci: %i\nPreciBool: %i\nAdvance: %i\n", flags->minus, flags->zero, flags->width, flags->widthbool, flags->preci, flags->precibool, flags->adv);
+			ft_flagsinit(flags);
 		}
 		s++;
 	}
@@ -88,8 +89,8 @@ int		ft_printf(const char *s, ...)
 	va_start(flags->valist, s);
 	ft_flagsinit(flags);
 	bytes = ft_printf_start(s, flags);
+	flags->bytes = 0;
 	va_end(flags->valist);
-	printf("\n\nBytes escritos: %i\n", flags->bytes);
 	free(flags);
 	return (bytes);
 }
@@ -98,20 +99,11 @@ int		main(void)
 {
 	char *s;
 
-	s = "hola";
-
-	printf("\n\n");
-	printf("\nReturn printf: %d", printf("Pues %*.*s mundo.", 20, 15, s));
-
+	s = "Hola";
 	
-	printf("\n\nResultado printf:\n");
-	printf("Pues %*.*s mundo.", 20, 15, s);
-	printf("\n");
-	printf("\nResultado ft_printf:\n");
-	ft_printf("Pues %*.*s mundo.", 20, 15, s);
-	printf("\n");
+	printf("\n\n");
+	printf("%-5.4%", s);
+	printf("\n\n");
+	ft_printf("%-5.4%", s);
+	printf("\n\n");
 }
-
-
-//SI PONGO ASTERISCOS Y NO PONGO UN ARGUMENTO, PROTEGER.
-//REPASAR BYTES ESCRITOS.
