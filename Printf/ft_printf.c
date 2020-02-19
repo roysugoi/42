@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/19 02:23:33 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/19 02:25:08 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_printf_types(const char *s, t_flags *flags)
 
 void	ft_printf_flags(const char *s, t_flags *flags)
 {
-	if (*s == '-')
+	if (*++s == '-')
 		flags->minus = 1 && ++s && flags->adv++;
 	if (*s == '0')
 		flags->zero = 1 && ++s && flags->adv++;
@@ -102,8 +102,8 @@ int		main(void)
 	s = "Hola";
 	
 	printf("\n\n");
-	printf("%-5.4%", s);
+	printf("%-5.4s", s);
 	printf("\n\n");
-	ft_printf("%-5.4%", s);
+	ft_printf("%-5.4s", s);
 	printf("\n\n");
 }
