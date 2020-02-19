@@ -6,7 +6,7 @@
 /*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:43:42 by roy               #+#    #+#             */
-/*   Updated: 2020/02/19 02:09:03 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/19 02:27:12 by roy              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_printf_s(t_flags *flags)
 	{
 		s = ft_strdup("(null)");
 		if (flags->preci < 6)
-		flags->preci = 0;
+			flags->preci = 0;
 	}
 	flags->length = ft_strlen(s);
 	if (flags->minus == 1 && flags->zero == 1)
