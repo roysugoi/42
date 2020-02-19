@@ -6,19 +6,11 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:43:42 by roy               #+#    #+#             */
-/*   Updated: 2020/02/19 17:23:04 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/19 17:24:01 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		ft_printf_types(const char *s, t_flags *flags)
-{
-	if (*s == 's')
-		ft_printf_s(flags);
-	++s;
-	return (0);
-}
 
 void	ft_printf_s(t_flags *flags)
 {
