@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/19 01:28:40 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/19 17:23:12 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int		ft_atoi(const char *s);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s);
 void	ft_flagsinit(t_flags *flags);
+void	ft_printf_flags1(const char *s, t_flags *flags);
+void	ft_printf_flags2(const char *s, t_flags *flags);
+int		ft_printf_types(const char *s, t_flags *flags);
 void	ft_printf_s(t_flags *flags);
 void	ft_printf_s1(t_flags *flags, char * s, int i);
 void	ft_printf_s2(t_flags *flags, char * s, int i);

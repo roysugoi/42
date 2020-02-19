@@ -3,24 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/19 02:25:08 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/19 17:22:51 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf_types(const char *s, t_flags *flags)
-{
-	if (*s == 's')
-		ft_printf_s(flags);
-	++s;
-	return (0);
-}
-
-void	ft_printf_flags(const char *s, t_flags *flags)
+void	ft_printf_flags1(const char *s, t_flags *flags)
 {
 	if (*++s == '-')
 		flags->minus = 1 && ++s && flags->adv++;
@@ -36,6 +28,11 @@ void	ft_printf_flags(const char *s, t_flags *flags)
 			flags->minus = 1;
 		}
 	}
+	ft_printf_flags2(s, flags);
+}
+
+void	ft_printf_flags2(const char *s, t_flags *flags)
+{
 	while (ft_isdigit(*s))
 	{
 		flags->width = flags->width * 10 + (*s - '0');
@@ -67,9 +64,8 @@ int		ft_printf_start(const char *s, t_flags *flags)
 		else
 		{
 			flags->adv++;
-			ft_printf_flags(s, flags);
+			ft_printf_flags1(s, flags);
 			s = s + flags->adv;
-			//printf("\n\nMinus flag: %i\nZero flag: %i\nWidth: %i\nWidthBool: %i\nPreci: %i\nPreciBool: %i\nAdvance: %i\n", flags->minus, flags->zero, flags->width, flags->widthbool, flags->preci, flags->precibool, flags->adv);
 			ft_flagsinit(flags);
 		}
 		s++;
@@ -100,7 +96,6 @@ int		main(void)
 	char *s;
 
 	s = "Hola";
-	
 	printf("\n\n");
 	printf("%-5.4s", s);
 	printf("\n\n");

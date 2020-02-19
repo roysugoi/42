@@ -3,20 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_s1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roy <roy@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:43:42 by roy               #+#    #+#             */
-/*   Updated: 2020/02/19 02:27:12 by roy              ###   ########.fr       */
+/*   Updated: 2020/02/19 17:23:04 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int		ft_printf_types(const char *s, t_flags *flags)
+{
+	if (*s == 's')
+		ft_printf_s(flags);
+	++s;
+	return (0);
+}
+
 void	ft_printf_s(t_flags *flags)
 {
 	int		i;
 	char	*s;
-	
+
 	i = 0;
 	if (!(s = va_arg(flags->valist, char*)))
 	{
@@ -35,7 +43,7 @@ void	ft_printf_s(t_flags *flags)
 		ft_printf_s1(flags, s, i);
 }
 
-void	ft_printf_s1(t_flags *flags, char * s, int i)
+void	ft_printf_s1(t_flags *flags, char *s, int i)
 {
 	if (flags->preci < 0)
 		flags->preci = (flags->preci * -1);
@@ -61,7 +69,7 @@ void	ft_printf_s1(t_flags *flags, char * s, int i)
 		ft_putstr_a(s, flags);
 }
 
-void	ft_printf_s2(t_flags *flags, char * s, int i)
+void	ft_printf_s2(t_flags *flags, char *s, int i)
 {
 	if (flags->widthbool == 1 && flags->precibool == 1)
 	{
