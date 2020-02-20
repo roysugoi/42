@@ -7,10 +7,12 @@ CCTWO	= ar rc libftprintf.a *.o
 RM		= rm -f
 CFLAGS	= -Wall -Werror -Wextra
 CLEAR	= clear
+CLEAN	= rm -f *.o
 NORM	= norminette *.c
 all:
 			${CC} ${OBJS}
 			${CCTWO}
+			${CLEAN}
 			${CLEAR}
 			${NORM}
 $(NAME):
