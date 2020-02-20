@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:44:55 by roy               #+#    #+#             */
-/*   Updated: 2020/02/19 16:55:19 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/20 20:50:30 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,6 @@ size_t	ft_strlen(const char *str)
 	return (size);
 }
 
-char	*ft_strdup(const char *s)
-{
-	char			*aux;
-	unsigned long	i;
-	unsigned long	len;
-
-	i = 0;
-	len = ft_strlen(s);
-	if (!(aux = (char *)malloc(sizeof(*aux) * (len + 1))))
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		aux[i] = s[i];
-		i++;
-	}
-	aux[i] = '\0';
-	return (aux);
-}
-
 int		ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
@@ -71,4 +52,11 @@ int		ft_isvar(char c)
 	c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
 		return (1);
 	return (0);
+}
+
+void	ft_printf_types(const char *s, t_flags *flags)
+{
+	if (*s == 's')
+		ft_printf_s(flags);
+	++s;
 }

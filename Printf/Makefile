@@ -1,14 +1,23 @@
-COMPIL	= gcc -Wall -Wextra *.c
+SRC_DIR = SRC_DIR
+INCLUDES=./
+NAME	= libftprintf.a
+OBJS	= *.c
+CC		= gcc -c -Wall -Wextra -Werror
+CCTWO	= ar rc libftprintf.a *.o
+RM		= rm -f
+CFLAGS	= -Wall -Werror -Wextra
 CLEAR	= clear
-RUNNER	= ./a.out
-CLEAN	= rm -f *.out *.o
-NORMI	= norminette *.c
-
+NORM	= norminette *.c
 all:
-		${COMPIL}
-		${CLEAR}
-		${RUNNER}
-		${CLEAN}
-		${NORMI}
-
-.PHONY:		all 
+			${CC} ${OBJS}
+			${CCTWO}
+			${CLEAR}
+			${NORM}
+$(NAME):
+			${CC} ${OBJS} ${CCTWO}
+fclean:		clean
+			${RM} ${NAME}
+clean:
+			${RM} *.o
+re:			fclean all
+.PHONY:		all clean fclean re

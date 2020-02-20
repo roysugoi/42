@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/19 17:22:51 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/20 20:49:30 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 void	ft_printf_flags1(const char *s, t_flags *flags)
 {
-	if (*++s == '-')
-		flags->minus = 1 && ++s && flags->adv++;
-	if (*s == '0')
-		flags->zero = 1 && ++s && flags->adv++;
+	++s;
+	while (*s == '-' || *s == '0')
+	{
+		if (*s == '-')
+			flags->minus = 1 && flags->adv++;
+		if (*s == '0')
+			flags->zero = 1 && flags->adv++;
+		s++;
+	}
 	if (*s == '*')
 	{
 		flags->width = va_arg(flags->valist, int);
@@ -36,17 +41,16 @@ void	ft_printf_flags2(const char *s, t_flags *flags)
 	while (ft_isdigit(*s))
 	{
 		flags->width = flags->width * 10 + (*s - '0');
-		flags->widthbool = 1 && ++s && flags->adv++;
+		flags->widthbool = 1 && flags->adv++ && ++s;
 	}
 	if (*s == '.')
-		flags->precibool = 1 && ++s && flags->adv++;
+		flags->precibool = 1 && flags->adv++ && ++s;
 	if (*s == '*')
-		(flags->preci = va_arg(flags->valist, int)) && ++s && flags->adv++;
+		(flags->preci = va_arg(flags->valist, int)) && flags->adv++ && ++s;
 	while (ft_isdigit(*s))
 	{
 		flags->preci = flags->preci * 10 + (*s - '0');
-		++s;
-		flags->adv++;
+		flags->adv++ && ++s;
 	}
 	ft_printf_types(s, flags);
 }
@@ -80,8 +84,9 @@ int		ft_printf(const char *s, ...)
 
 	if (!s)
 		return (0);
-	if (!(flags = malloc(sizeof(*flags))))
+	if (!(flags = (t_flags *)malloc(sizeof(flags))))
 		return (-1);
+	flags->bytes = 0;
 	va_start(flags->valist, s);
 	ft_flagsinit(flags);
 	bytes = ft_printf_start(s, flags);
@@ -89,16 +94,4 @@ int		ft_printf(const char *s, ...)
 	va_end(flags->valist);
 	free(flags);
 	return (bytes);
-}
-
-int		main(void)
-{
-	char *s;
-
-	s = "Hola";
-	printf("\n\n");
-	printf("%-5.4s", s);
-	printf("\n\n");
-	ft_printf("%-5.4s", s);
-	printf("\n\n");
 }

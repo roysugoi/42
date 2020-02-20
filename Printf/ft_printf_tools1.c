@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:57:58 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/19 17:24:10 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/20 20:50:20 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,8 @@ void	ft_flagsinit(t_flags *flags)
 	flags->widthbool = 0;
 	flags->preci = 0;
 	flags->precibool = 0;
-	flags->variable = 0;
 	flags->length = 0;
 	flags->adv = 0;
-}
-
-int		ft_printf_types(const char *s, t_flags *flags)
-{
-	if (*s == 's')
-		ft_printf_s(flags);
-	++s;
-	return (0);
 }
 
 void	ft_putstr_a(char *s, t_flags *flags)
@@ -71,6 +62,16 @@ void	ft_putblank(int i, t_flags *flags)
 	while (i > 0)
 	{
 		write(1, " ", 1);
+		flags->bytes++;
+		i--;
+	}
+}
+
+void	ft_putzero(int i, t_flags *flags)
+{
+	while (i > 0)
+	{
+		write(1, "0", 1);
 		flags->bytes++;
 		i--;
 	}

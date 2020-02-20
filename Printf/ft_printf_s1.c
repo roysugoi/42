@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:43:42 by roy               #+#    #+#             */
-/*   Updated: 2020/02/19 17:24:01 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/20 20:42:17 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,20 @@
 void	ft_printf_s(t_flags *flags)
 {
 	int		i;
-	char	*s;
+	char	*t;
 
 	i = 0;
-	if (!(s = va_arg(flags->valist, char*)))
-	{
-		s = ft_strdup("(null)");
-		if (flags->preci < 6)
-			flags->preci = 0;
-	}
-	flags->length = ft_strlen(s);
+	if (!(t = va_arg(flags->valist, char*)))
+		t = "(null)";
+	flags->length = ft_strlen(t);
 	if (flags->minus == 1 && flags->zero == 1)
 		flags->zero = 0;
 	if (flags->minus == 0 && flags->zero == 0)
-		ft_printf_s1(flags, s, i);
+		ft_printf_s1(flags, t, i);
 	if (flags->minus == 1 && flags->zero == 0)
-		ft_printf_s2(flags, s, i);
+		ft_printf_s2(flags, t, i);
 	if (flags->minus == 0 && flags->zero == 1)
-		ft_printf_s1(flags, s, i);
+		ft_printf_s1(flags, t, i);
 }
 
 void	ft_printf_s1(t_flags *flags, char *s, int i)
@@ -54,7 +50,10 @@ void	ft_printf_s1(t_flags *flags, char *s, int i)
 	if (flags->widthbool == 1 && flags->precibool == 0)
 	{
 		i = flags->width - flags->length;
-		ft_putblank(i, flags);
+		if (flags->zero == 1)
+			ft_putzero(i, flags);
+		else
+			ft_putblank(i, flags);
 		ft_putstr_b(s, flags, (flags->width - i));
 	}
 	if (flags->widthbool == 0 && flags->precibool == 0)
