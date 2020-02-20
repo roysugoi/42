@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:44:55 by roy               #+#    #+#             */
-/*   Updated: 2020/02/20 20:50:30 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/20 21:17:15 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,4 @@ int		ft_isvar(char c)
 	c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
 		return (1);
 	return (0);
-}
-
-void	ft_printf_types(const char *s, t_flags *flags)
-{
-	if (*s == 's')
-		ft_printf_s(flags);
-	++s;
 }

@@ -6,11 +6,20 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/20 20:49:30 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/20 21:35:10 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_printf_types(const char *s, t_flags *flags)
+{
+	if (*s == 'c')
+		ft_printf_c(flags);
+	if (*s == 's')
+		ft_printf_s(flags);
+	++s;
+}
 
 void	ft_printf_flags1(const char *s, t_flags *flags)
 {
@@ -47,7 +56,7 @@ void	ft_printf_flags2(const char *s, t_flags *flags)
 		flags->precibool = 1 && flags->adv++ && ++s;
 	if (*s == '*')
 		(flags->preci = va_arg(flags->valist, int)) && flags->adv++ && ++s;
-	while (ft_isdigit(*s))
+	while (ft_isdigit(*s) && flags->precibool == 1)
 	{
 		flags->preci = flags->preci * 10 + (*s - '0');
 		flags->adv++ && ++s;
