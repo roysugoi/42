@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 22:47:16 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/20 23:16:21 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:50:23 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,75 +14,31 @@
 
 void	ft_printf_p(t_flags *flags)
 {
-	long t;
-
-	t = va_arg(flags->valist, long);
-	write(1, "0", 1);
-	write(1, "x", 1);
-	ft_printf(ft_itoahex(t));
-}
-
-char	*ft_itoahex(long n)
-{
-	int		digits;
-	long	numb;
-	char	*str;
-
-	numb = n;
-	digits = get_digits(numb);
-	if (!(str = malloc((digits + 1) * sizeof(char))))
-		return (NULL);
-	str[digits--] = '\0';
-	if (numb == 0)
-		str[0] = '0';
-	while (numb > 0)
-	{
-		if (numb % 16 <= 9)
-			str[digits] = numb % 16 + '0';
-		else if (numb % 16 < 16)
-			str[digits] = numb % 16 + 'W';
-		numb /= 16;
-		digits--;
-	}
-	return (str);
-}
-
-int		get_digits(long n)
-{
-	int	i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	while (n)
-	{
-		n /= 16;
-		i++;
-	}
-	return (i);
-}
-
-/*
-void	ft_printf_s(t_flags *flags)
-{
 	int		i;
+	long	n;
 	char	*t;
+	char	*s;
 
 	i = 0;
-	if (!(t = va_arg(flags->valist, char*)))
-		t = "(null)";
-	flags->length = ft_strlen(t);
+	if ((n = va_arg(flags->valist, long)))
+	{
+		t = ft_itoahex(n);
+		s = ft_strjoin("0x", t);
+	}
+	else
+		s = "0";
+	flags->length = ft_strlen(s);
 	if (flags->minus == 1 && flags->zero == 1)
 		flags->zero = 0;
 	if (flags->minus == 0 && flags->zero == 0)
-		ft_printf_s1(flags, t, i);
+		ft_printf_s1(flags, s, i);
 	if (flags->minus == 1 && flags->zero == 0)
-		ft_printf_s2(flags, t, i);
+		ft_printf_s2(flags, s, i);
 	if (flags->minus == 0 && flags->zero == 1)
-		ft_printf_s1(flags, t, i);
+		ft_printf_s1(flags, s, i);
 }
 
-void	ft_printf_s1(t_flags *flags, char *s, int i)
+void	ft_printf_p1(t_flags *flags, char *s, int i)
 {
 	if (flags->preci < 0)
 		flags->preci = (flags->preci * -1);
@@ -111,7 +67,7 @@ void	ft_printf_s1(t_flags *flags, char *s, int i)
 		ft_putstr_a(s, flags);
 }
 
-void	ft_printf_s2(t_flags *flags, char *s, int i)
+void	ft_printf_p2(t_flags *flags, char *s, int i)
 {
 	if (flags->widthbool == 1 && flags->precibool == 1)
 	{
@@ -136,4 +92,3 @@ void	ft_printf_s2(t_flags *flags, char *s, int i)
 	if (flags->widthbool == 0 && flags->precibool == 0)
 		ft_putstr_a(s, flags);
 }
-*/
