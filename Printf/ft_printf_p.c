@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 22:47:16 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/21 16:50:23 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/21 17:57:20 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_printf_p(t_flags *flags)
 		s = ft_strjoin("0x", t);
 	}
 	else
-		s = "0";
+		s = "0x0";
 	flags->length = ft_strlen(s);
 	if (flags->minus == 1 && flags->zero == 1)
 		flags->zero = 0;
