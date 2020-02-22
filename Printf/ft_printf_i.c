@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/22 22:04:26 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/22 22:08:47 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,12 @@ void	ft_printf_i1(t_flags *flags, int j, int i)
 	}
 	if (flags->widthbool == 1 && flags->precibool == 1)
 	{
-		if (flags->width > flags->preci)
+		if (flags->width < flags->preci)
+			flags->width = flags->preci;
+		if (flags->width >= flags->preci)
 		{
+			if (flags->preci < flags->length)
+				flags->preci = flags->length;
 			i = flags->width - flags->preci - flags->minusint;
 			ft_putblank(i, flags);
 			i = flags->preci - flags->length;
