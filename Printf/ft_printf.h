@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/22 11:02:04 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/22 16:46:37 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ void		ft_printf_s2(t_flags *flags, char * s, int i);
 void		ft_printf_c(t_flags *flags);
 void		ft_printf_c1(t_flags *flags, int s, int i);
 void		ft_printf_c2(t_flags *flags, int s, int i);
-char		*ft_itoahex(long n);
 int			ft_printf(const char *s, ...);
-void		ft_printf_p(t_flags *flags);
-void		ft_printf_p1(t_flags *flags, char *s, int i);
-void		ft_printf_p2(t_flags *flags, char *s, int i);
-int			get_digits(long n);
-char		*ft_strjoin(char const *s1, char const *s2);
 void		ft_printf_pc(t_flags *flags);
+int			ft_numofdigits(int i);
+void		ft_printf_i(t_flags *flags);
+void		ft_printf_i1(t_flags *flags, int j, int i);
+void		ft_putnbr_fd(int n, t_flags *flags, int fd);
+void		ft_putchar_fd(char c, t_flags *flags, int fd);
 
 #endif

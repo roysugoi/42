@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:44:55 by roy               #+#    #+#             */
-/*   Updated: 2020/02/20 23:03:29 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/22 17:50:02 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,22 @@ int		ft_isvar(char c)
 	c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
 		return (1);
 	return (0);
+}
+
+int		ft_numofdigits(int i)
+{
+	int	j;
+
+	j = 0;
+	if (i < 0)
+	{
+		i = i * (-1);
+		j++;
+	}
+	while (i > 0)
+	{
+		i = i / 10;
+		j++;
+	}
+	return (j);
 }
