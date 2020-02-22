@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/22 22:04:25 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/23 00:21:37 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ void	ft_printf_types(const char *s, t_flags *flags)
 		ft_printf_s(flags);
 	if (*s == '%')
 		ft_printf_pc(flags);
-	if (*s == 'i')
+	if (*s == 'i' || *s == 'd')
 		ft_printf_i(flags);
+	if (*s == 'u')
+		ft_printf_u(flags);
+	if (*s == 'x' || *s == 'X')
+		ft_printf_x(flags, *s);
 	++s;
 }
 
@@ -108,3 +112,9 @@ int		ft_printf(const char *s, ...)
 	free(flags);
 	return (bytes);
 }
+
+/*int main(void)
+{
+	ft_printf("%u", 1234);
+}
+*/
