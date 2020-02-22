@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/21 16:23:07 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/22 11:06:32 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_printf_types(const char *s, t_flags *flags)
 		ft_printf_s(flags);
 	if (*s == 'p')
 		ft_printf_p(flags);
+	if (*s == '%')
+		ft_printf_pc(flags);
 	++s;
 }
 

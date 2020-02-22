@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/21 16:31:09 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/22 11:02:04 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void		ft_printf_p1(t_flags *flags, char *s, int i);
 void		ft_printf_p2(t_flags *flags, char *s, int i);
 int			get_digits(long n);
 char		*ft_strjoin(char const *s1, char const *s2);
+void		ft_printf_pc(t_flags *flags);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 22:47:16 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/21 17:57:20 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/22 11:00:48 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,19 @@ void	ft_printf_p(t_flags *flags)
 	if (flags->minus == 1 && flags->zero == 1)
 		flags->zero = 0;
 	if (flags->minus == 0 && flags->zero == 0)
-		ft_printf_s1(flags, s, i);
+		ft_printf_p1(flags, s, i);
 	if (flags->minus == 1 && flags->zero == 0)
-		ft_printf_s2(flags, s, i);
+		ft_printf_p2(flags, s, i);
 	if (flags->minus == 0 && flags->zero == 1)
-		ft_printf_s1(flags, s, i);
+		ft_printf_p1(flags, s, i);
 }
 
 void	ft_printf_p1(t_flags *flags, char *s, int i)
 {
 	if (flags->preci < 0)
 		flags->preci = (flags->preci * -1);
+	if (flags->preci == 0 && flags->precibool == 1)
+		flags->preci = 2;
 	if (flags->preci > flags->length)
 		flags->preci = flags->length;
 	if (flags->widthbool == 1 && flags->precibool == 1)
