@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/22 19:03:24 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/22 21:32:05 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void		ft_printf_pc(t_flags *flags);
 int			ft_numofdigits(int i);
 void		ft_printf_i(t_flags *flags);
 void		ft_printf_i1(t_flags *flags, int j, int i);
-void		ft_printf_i2(t_flags *flags, int j, int i);
 void		ft_putnbr_fd(int n, t_flags *flags, int fd);
 void		ft_putchar_fd(char c, t_flags *flags, int fd);
+void		ft_writeandbyte(t_flags *flags);
 
 #endif
