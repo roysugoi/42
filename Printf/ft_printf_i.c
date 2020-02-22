@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/22 22:08:47 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/22 22:51:59 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ft_printf_i(t_flags *flags)
 	if (flags->preci == 1)
 		flags->zero = 0;
 	ft_printf_i1(flags, j, i);
-	
 }
 
 void	ft_printf_i1(t_flags *flags, int j, int i)
@@ -82,24 +81,50 @@ void	ft_printf_i1(t_flags *flags, int j, int i)
 		i = flags->preci - flags->length;
 		if (flags->minusint == 1)
 			ft_writeandbyte(flags);
-		ft_putzero(i, flags);
-		ft_putnbr_fd(j, flags, 1);
+		if (flags->preci != 0)
+		{
+			ft_putzero(i, flags);
+			ft_putnbr_fd(j, flags, 1);
+		}
 	}
 	if (flags->widthbool == 1 && flags->precibool == 1)
 	{
-		if (flags->width < flags->preci)
-			flags->width = flags->preci;
-		if (flags->width >= flags->preci)
+		if (flags->minus == 0)
 		{
-			if (flags->preci < flags->length)
-				flags->preci = flags->length;
-			i = flags->width - flags->preci - flags->minusint;
-			ft_putblank(i, flags);
-			i = flags->preci - flags->length;
-			if (flags->minusint == 1)
-				ft_writeandbyte(flags);
-			ft_putzero(i, flags);
-			ft_putnbr_fd(j, flags, 1);
+			if (flags->width < flags->preci)
+				flags->width = flags->preci;
+			if (flags->width >= flags->preci)
+			{
+				if (flags->preci != 0)
+					if (flags->preci < flags->length)
+						flags->preci = flags->length;
+				i = flags->width - flags->preci - flags->minusint;
+				ft_putblank(i, flags);
+				i = flags->preci - flags->length;
+				if (flags->minusint == 1)
+					ft_writeandbyte(flags);
+				ft_putzero(i, flags);
+				if (flags->preci != 0)
+					ft_putnbr_fd(j, flags, 1);
+			}
+		}
+		if (flags->minus == 1)
+		{
+			if (flags->width < flags->preci)
+				flags->width = flags->preci;
+			if (flags->width >= flags->preci)
+			{
+				if (flags->preci < flags->length && flags->preci != 0)
+					flags->preci = flags->length;
+				i = flags->preci - flags->length;
+				if (flags->minusint == 1)
+					ft_writeandbyte(flags);
+				ft_putzero(i, flags);
+				if (flags->preci != 0)
+					ft_putnbr_fd(j, flags, 1);
+				i = flags->width - flags->preci - flags->minusint;
+				ft_putblank(i, flags);
+			}
 		}
 	}
 }
@@ -109,8 +134,3 @@ void	ft_writeandbyte(t_flags *flags)
 	write(1, "-", 1);
 	flags->bytes++;
 }
-
-	/*printf("\npreci:%i", flags->preci);
-	printf("\nlength:%i", flags->length);
-	printf("\nminusint:%i", flags->minusint);
-	printf("\nValor de i:%i", i);*/
