@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 23:46:03 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/24 00:27:22 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,11 @@ void	ft_printf_flags2(const char *s, t_flags *flags)
 	if (*s == '.')
 		flags->precibool = 1 && flags->adv++ && ++s;
 	if (*s == '*')
-		(flags->preci = va_arg(flags->valist, int)) && flags->adv++ && ++s;
+	{
+		(flags->preci = va_arg(flags->valist, int));
+		flags->adv++;
+		++s;
+	}
 	while (ft_isdigit(*s) && flags->precibool == 1 && *s != '\0')
 	{
 		flags->preci = flags->preci * 10 + (*s - '0');
