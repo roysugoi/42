@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 00:29:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 22:28:32 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/23 22:41:19 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,29 +70,27 @@ char		*ft_itoahex(unsigned int n)
 	return (str);
 }
 
-char		*ft_itoahexb(unsigned int n, t_flags *flags)
+char		*ft_itoahexb(unsigned int n, t_flags *flags, int dgt, long numb)
 {
-	int		digits;
-	long	numb;
 	char	*str;
 
 	if (n)
 	{
 		numb = n;
-		digits = ft_getdigits(numb);
-		if (!(str = malloc((digits + 1) * sizeof(char))))
+		dgt = ft_getdigits(numb);
+		if (!(str = malloc((dgt + 1) * sizeof(char))))
 			return (NULL);
-		str[digits--] = '\0';
+		str[dgt--] = '\0';
 		if (numb == 0)
 			str[0] = '0';
 		while (numb > 0)
 		{
 			if (numb % 16 <= 9)
-				str[digits] = numb % 16 + '0';
+				str[dgt] = numb % 16 + '0';
 			else if (numb % 16 < 16)
-				str[digits] = numb % 16 + 'W';
+				str[dgt] = numb % 16 + 'W';
 			numb /= 16;
-			digits--;
+			dgt--;
 		}
 		return (str);
 	}

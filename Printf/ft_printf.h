@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 22:27:06 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/23 22:40:51 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		ft_putchar_fd(char c, t_flags *flags, int fd);
 void		ft_writeandbyte(t_flags *flags);
 int			ft_getdigits(long n);
 char		*ft_itoahex(unsigned int n);
-char		*ft_itoahexb(unsigned int n, t_flags *flags);
+char		*ft_itoahexb(unsigned int n, t_flags *flags, int dgt, long numb);
 char		*ft_itoahexupper(long n);
 void		ft_writezerox(t_flags *flags);
 
