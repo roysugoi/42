@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:06:59 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/22 23:10:55 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/24 00:26:32 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_printf_i5(t_flags *flags, int j, int i)
 				i = flags->width - flags->preci - flags->minusint;
 				ft_putblank(i, flags);
 				i = flags->preci - flags->length;
-				if (flags->minusint == 1)
+				if (flags->minusint == 1 && j >= 0 && j < 2147483647)
 					ft_writeandbyte(flags);
 				ft_putzero(i, flags);
 				if (flags->preci != 0)
@@ -52,7 +52,7 @@ void	ft_printf_i6(t_flags *flags, int j, int i)
 				if (flags->preci < flags->length && flags->preci != 0)
 					flags->preci = flags->length;
 				i = flags->preci - flags->length;
-				if (flags->minusint == 1)
+				if (flags->minusint == 1 && j >= 0 && j < 2147483647)
 					ft_writeandbyte(flags);
 				ft_putzero(i, flags);
 				if (flags->preci != 0)
