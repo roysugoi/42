@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/24 00:27:22 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/24 00:49:11 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int		ft_printf_flags1(const char *s, t_flags *flags)
 		if (*s == '*')
 		{
 			flags->width = va_arg(flags->valist, int);
+			if (flags->widthbool == 1 && flags->width < 0)
+				flags->width = flags->width * (-1);
 			flags->widthbool = 1 && ++s && flags->adv++;
 			if (flags->width < 0)
 			{
@@ -72,6 +74,11 @@ void	ft_printf_flags2(const char *s, t_flags *flags)
 	if (*s == '*')
 	{
 		(flags->preci = va_arg(flags->valist, int));
+		if (flags->preci < 0)
+		{
+			flags->precibool = 0;
+			flags->preci = 0;
+		}
 		flags->adv++;
 		++s;
 	}
