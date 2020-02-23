@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 00:21:37 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/23 22:21:45 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_printf_types(const char *s, t_flags *flags)
 		ft_printf_u(flags);
 	if (*s == 'x' || *s == 'X')
 		ft_printf_x(flags, *s);
+	if (*s == 'p')
+		ft_printf_p(flags);
 	++s;
 }
 
@@ -96,25 +98,18 @@ int		ft_printf_start(const char *s, t_flags *flags)
 
 int		ft_printf(const char *s, ...)
 {
-	t_flags	*flags;
+	t_flags	flags;
 	int		bytes;
 
 	if (!s)
 		return (0);
-	if (!(flags = (t_flags *)malloc(sizeof(flags))))
-		return (-1);
-	flags->bytes = 0;
-	va_start(flags->valist, s);
-	ft_flagsinit(flags);
-	bytes = ft_printf_start(s, flags);
-	flags->bytes = 0;
-	va_end(flags->valist);
-	free(flags);
+	flags.bytes = 0;
+	va_start(flags.valist, s);
+	ft_flagsinit(&flags);
+	bytes = ft_printf_start(s, &flags);
+	flags.bytes = 0;
+	va_end(flags.valist);
 	return (bytes);
 }
 
-/*int main(void)
-{
-	ft_printf("%u", 1234);
-}
-*/
+//int main(void){printf("Hi");}

@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 00:10:28 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/23 01:05:08 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_printf_i(t_flags *flags)
 	flags->length = ft_numofdigits(j);
 	if (flags->minus == 1 && flags->zero == 1)
 		flags->zero = 0;
-	if (flags->preci == 1)
+	if (flags->precibool == 1)
 		flags->zero = 0;
 	ft_printf_i1(flags, j, i);
 }

@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:44:55 by roy               #+#    #+#             */
-/*   Updated: 2020/02/23 00:03:30 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/23 03:16:45 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_atoi(const char *str)
 	return (n);
 }
 
-size_t	ft_strlen(const char *str)
+int		ft_strlen(const char *str)
 {
 	int	size;
 
