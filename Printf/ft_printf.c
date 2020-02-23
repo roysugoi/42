@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:34:24 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 22:21:45 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/23 23:46:03 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,38 @@ void	ft_printf_types(const char *s, t_flags *flags)
 	++s;
 }
 
-void	ft_printf_flags1(const char *s, t_flags *flags)
+int		ft_printf_flags1(const char *s, t_flags *flags)
 {
-	++s;
-	while (*s == '-' || *s == '0')
+	if (++s != '\0')
 	{
-		if (*s == '-')
-			flags->minus = 1 && flags->adv++;
-		if (*s == '0')
-			flags->zero = 1 && flags->adv++;
-		s++;
-	}
-	if (*s == '*')
-	{
-		flags->width = va_arg(flags->valist, int);
-		flags->widthbool = 1 && ++s && flags->adv++;
-		if (flags->width < 0)
+		while (*s == '-' || *s == '0')
 		{
-			flags->width = flags->width * -1;
-			flags->minus = 1;
+			if (*s == '-')
+				flags->minus = 1 && flags->adv++;
+			if (*s == '0')
+				flags->zero = 1 && flags->adv++;
+			s++;
 		}
+		if (*s == '*')
+		{
+			flags->width = va_arg(flags->valist, int);
+			flags->widthbool = 1 && ++s && flags->adv++;
+			if (flags->width < 0)
+			{
+				flags->width = flags->width * -1;
+				flags->minus = 1;
+			}
+		}
+		ft_printf_flags2(s, flags);
+		return (0);
 	}
-	ft_printf_flags2(s, flags);
+	else
+		return (-1);
 }
 
 void	ft_printf_flags2(const char *s, t_flags *flags)
 {
-	while (ft_isdigit(*s))
+	while (ft_isdigit(*s) && *s != '\0')
 	{
 		flags->width = flags->width * 10 + (*s - '0');
 		flags->widthbool = 1 && flags->adv++ && ++s;
@@ -66,12 +71,15 @@ void	ft_printf_flags2(const char *s, t_flags *flags)
 		flags->precibool = 1 && flags->adv++ && ++s;
 	if (*s == '*')
 		(flags->preci = va_arg(flags->valist, int)) && flags->adv++ && ++s;
-	while (ft_isdigit(*s) && flags->precibool == 1)
+	while (ft_isdigit(*s) && flags->precibool == 1 && *s != '\0')
 	{
 		flags->preci = flags->preci * 10 + (*s - '0');
 		flags->adv++ && ++s;
 	}
-	ft_printf_types(s, flags);
+	if (*s != '\0')
+		ft_printf_types(s, flags);
+	else
+		flags->bytes = -1;
 }
 
 int		ft_printf_start(const char *s, t_flags *flags)
@@ -88,7 +96,8 @@ int		ft_printf_start(const char *s, t_flags *flags)
 		{
 			flags->adv++;
 			ft_printf_flags1(s, flags);
-			s = s + flags->adv;
+			if (flags->bytes >= 0)
+				s = s + flags->adv;
 			ft_flagsinit(flags);
 		}
 		s++;
@@ -111,5 +120,3 @@ int		ft_printf(const char *s, ...)
 	va_end(flags.valist);
 	return (bytes);
 }
-
-//int main(void){printf("Hi");}

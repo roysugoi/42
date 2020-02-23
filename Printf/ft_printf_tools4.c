@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 00:29:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 22:41:19 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/23 23:24:30 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char		*ft_itoahex(unsigned int n)
 	return (str);
 }
 
-char		*ft_itoahexb(unsigned int n, t_flags *flags, int dgt, long numb)
+char		*ft_itoahexb(unsigned long int n, t_flags *flags, int dgt, long numb)
 {
 	char	*str;
 
@@ -99,7 +99,7 @@ char		*ft_itoahexb(unsigned int n, t_flags *flags, int dgt, long numb)
 	return ("0");
 }
 
-char		*ft_itoahexupper(long n)
+char		*ft_itoahexupper(unsigned long int n)
 {
 	int		digits;
 	long	numb;

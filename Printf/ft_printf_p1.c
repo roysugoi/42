@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 22:40:13 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/23 23:19:01 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_printf_p(t_flags *flags)
 {
-	int				i;
-	unsigned int	j;
-	char			*v;
+	int					i;
+	unsigned long int	j;
+	char				*v;
 
 	i = 0;
-	j = (va_arg(flags->valist, unsigned int));
+	j = (va_arg(flags->valist, unsigned long int));
 	v = ft_itoahexb(j, flags, 0, 0);
 	flags->length = ft_strlen(v);
 	ft_printf_p1(flags, v, i);
@@ -50,6 +50,7 @@ void	ft_printf_p2(t_flags *flags, char *v, int i)
 			}
 			if (flags->minus == 1)
 			{
+				ft_writezerox(flags);
 				ft_putstr_b(v, flags, flags->length);
 				ft_putblank(i, flags);
 			}
