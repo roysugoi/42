@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 00:29:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 23:24:30 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/24 18:40:34 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,26 @@ char		*ft_itoahex(unsigned int n)
 	return (str);
 }
 
-char		*ft_itoahexb(unsigned long int n, t_flags *flags, int dgt, long numb)
+char		*ft_itoahexb(t_uli n, t_flags *flags, int dgt, long nu)
 {
 	char	*str;
 
 	if (n)
 	{
-		numb = n;
-		dgt = ft_getdigits(numb);
+		nu = n;
+		dgt = ft_getdigits(nu);
 		if (!(str = malloc((dgt + 1) * sizeof(char))))
 			return (NULL);
 		str[dgt--] = '\0';
-		if (numb == 0)
+		if (nu == 0)
 			str[0] = '0';
-		while (numb > 0)
+		while (nu > 0)
 		{
-			if (numb % 16 <= 9)
-				str[dgt] = numb % 16 + '0';
-			else if (numb % 16 < 16)
-				str[dgt] = numb % 16 + 'W';
-			numb /= 16;
+			if (nu % 16 <= 9)
+				str[dgt] = nu % 16 + '0';
+			else if (nu % 16 < 16)
+				str[dgt] = nu % 16 + 'W';
+			nu /= 16;
 			dgt--;
 		}
 		return (str);
@@ -122,14 +122,4 @@ char		*ft_itoahexupper(unsigned long int n)
 		digits--;
 	}
 	return (str);
-}
-
-void		ft_putzero(int i, t_flags *flags)
-{
-	while (i > 0)
-	{
-		write(1, "0", 1);
-		flags->bytes++;
-		i--;
-	}
 }
