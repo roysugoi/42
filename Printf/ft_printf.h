@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/24 18:57:15 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:21:25 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 # include "stdlib.h"
 # include "stdio.h"
 # include "stdarg.h"
+# include "limits.h"
 
 typedef unsigned long int	t_uli;
+typedef unsigned long long	t_ull;
 
 typedef struct		s_flags
 {
@@ -78,7 +80,7 @@ void				ft_printf_x3(t_flags *flags, char *v, int i);
 void				ft_printf_x4(t_flags *flags, char *v, int i);
 void				ft_printf_x5(t_flags *flags, char *v, int i);
 void				ft_printf_x6(t_flags *flags, char *v, int i);
-void				ft_putnbr_fd(int n, t_flags *flags, int fd);
+void				ft_putnbr_fd(long long n, t_flags *flags, int fd);
 void				ft_printf_p(t_flags *flags);
 void				ft_printf_p1(t_flags *flags, char *v, int i);
 void				ft_printf_p2(t_flags *flags, char *v, int i);
@@ -86,13 +88,13 @@ void				ft_printf_p3(t_flags *flags, char *v, int i);
 void				ft_printf_p4(t_flags *flags, char *v, int i);
 void				ft_printf_p5(t_flags *flags, char *v, int i);
 void				ft_printf_p6(t_flags *flags, char *v, int i);
-void				ft_putnbr_fd_ui(unsigned int n, t_flags *flags, int fd);
+void				ft_putnbr_fd_ui(t_ull n, t_flags *flags, int fd);
 void				ft_putchar_fd(char c, t_flags *flags, int fd);
 void				ft_writeandbyte(t_flags *flags);
-int					ft_getdigits(long n);
-char				*ft_itoahex(unsigned int n);
-char				*ft_itoahexb(t_uli n, t_flags *flags, int dgt, long nu);
-char				*ft_itoahexupper(unsigned long int n);
+int					ft_getdigits(t_ull n);
+char				*ft_itoahex(t_ull n);
+char				*ft_itoahexb(t_ull n, t_flags *flags, int dgt, t_ull nu);
+char				*ft_itoahexupper(t_ull n);
 void				ft_writezerox(t_flags *flags);
 
 #endif

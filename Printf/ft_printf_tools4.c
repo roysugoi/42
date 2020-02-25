@@ -6,13 +6,13 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 00:29:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/24 18:40:34 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:21:17 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_putnbr_fd(int n, t_flags *flags, int fd)
+void		ft_putnbr_fd(long long n, t_flags *flags, int fd)
 {
 	if (n == -2147483648)
 		ft_putstr_a("-2147483648", flags);
@@ -30,7 +30,7 @@ void		ft_putnbr_fd(int n, t_flags *flags, int fd)
 		ft_putchar_fd(n + '0', flags, fd);
 }
 
-int			ft_getdigits(long n)
+int			ft_getdigits(t_ull n)
 {
 	int	i;
 
@@ -45,10 +45,10 @@ int			ft_getdigits(long n)
 	return (i);
 }
 
-char		*ft_itoahex(unsigned int n)
+char		*ft_itoahex(t_ull n)
 {
 	int		digits;
-	long	numb;
+	t_ull	numb;
 	char	*str;
 
 	numb = n;
@@ -70,7 +70,7 @@ char		*ft_itoahex(unsigned int n)
 	return (str);
 }
 
-char		*ft_itoahexb(t_uli n, t_flags *flags, int dgt, long nu)
+char		*ft_itoahexb(t_ull n, t_flags *flags, int dgt, t_ull nu)
 {
 	char	*str;
 
@@ -99,10 +99,10 @@ char		*ft_itoahexb(t_uli n, t_flags *flags, int dgt, long nu)
 	return ("0");
 }
 
-char		*ft_itoahexupper(unsigned long int n)
+char		*ft_itoahexupper(t_ull n)
 {
 	int		digits;
-	long	numb;
+	t_ull	numb;
 	char	*str;
 
 	numb = n;

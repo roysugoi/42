@@ -6,13 +6,13 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 16:43:06 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/24 18:30:53 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:13:56 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr_fd_ui(unsigned int n, t_flags *flags, int fd)
+void	ft_putnbr_fd_ui(t_ull n, t_flags *flags, int fd)
 {
 	if (n == 4294967295)
 		ft_putstr_a("4294967295", flags);

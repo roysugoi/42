@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 23:19:01 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:16:51 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	ft_printf_p(t_flags *flags)
 
 	i = 0;
 	j = (va_arg(flags->valist, unsigned long int));
-	v = ft_itoahexb(j, flags, 0, 0);
+	if (j >= ULLONG_MAX)
+		v = "ffffffffffffffff";
+	else
+		v = ft_itoahexb(j, flags, 0, 0);
 	flags->length = ft_strlen(v);
 	ft_printf_p1(flags, v, i);
 }
