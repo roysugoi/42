@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:43:42 by roy               #+#    #+#             */
-/*   Updated: 2020/02/24 18:33:53 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/25 22:41:24 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ void	ft_printf_s(t_flags *flags)
 
 void	ft_printf_s1(t_flags *flags, char *s, int i)
 {
-	if (flags->preci < 0)
-		flags->preci = (flags->preci * -1);
-	if (flags->preci > flags->length)
-		flags->preci = flags->length;
+	ft_printf_s1b(flags);
 	if (flags->widthbool == 1 && flags->precibool == 1)
 	{
 		i = flags->width - flags->preci;
@@ -45,6 +42,8 @@ void	ft_printf_s1(t_flags *flags, char *s, int i)
 	}
 	if (flags->widthbool == 0 && flags->precibool == 1)
 	{
+		if (flags->preci == 0 && flags->percent == 1)
+			flags->preci = flags->length;
 		ft_putstr_b(s, flags, flags->preci);
 	}
 	if (flags->widthbool == 1 && flags->precibool == 0)
@@ -84,4 +83,12 @@ void	ft_printf_s2(t_flags *flags, char *s, int i)
 	}
 	if (flags->widthbool == 0 && flags->precibool == 0)
 		ft_putstr_a(s, flags);
+}
+
+void	ft_printf_s1b(t_flags *flags)
+{
+	if (flags->preci < 0)
+		flags->preci = (flags->preci * -1);
+	if (flags->preci > flags->length)
+		flags->preci = flags->length;
 }

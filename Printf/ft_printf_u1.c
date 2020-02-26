@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 02:20:26 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/25 22:39:50 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 void	ft_printf_u(t_flags *flags)
 {
 	int				i;
-	unsigned int	j;
+	unsigned long	j;
 
 	i = 0;
-	if (!(j = (va_arg(flags->valist, unsigned int))))
+	if (!(j = (va_arg(flags->valist, unsigned long))))
 		j = 0;
 	if (j < 0)
 	{
 		j = j * -1;
 		flags->minusint = 1;
 	}
+	if (j >= 4294967295)
+		flags->max = 1;
 	flags->length = ft_numofdigits(j);
 	if (flags->minus == 1 && flags->zero == 1)
 		flags->zero = 0;
@@ -33,7 +35,7 @@ void	ft_printf_u(t_flags *flags)
 	ft_printf_u1(flags, j, i);
 }
 
-void	ft_printf_u1(t_flags *flags, unsigned int j, int i)
+void	ft_printf_u1(t_flags *flags, unsigned long j, int i)
 {
 	if (flags->widthbool == 0 && flags->precibool == 0)
 	{
@@ -44,7 +46,7 @@ void	ft_printf_u1(t_flags *flags, unsigned int j, int i)
 	ft_printf_u2(flags, j, i);
 }
 
-void	ft_printf_u2(t_flags *flags, unsigned int j, int i)
+void	ft_printf_u2(t_flags *flags, unsigned long j, int i)
 {
 	if (flags->widthbool == 1 && flags->precibool == 0)
 	{
@@ -70,7 +72,7 @@ void	ft_printf_u2(t_flags *flags, unsigned int j, int i)
 	ft_printf_u3(flags, j, i);
 }
 
-void	ft_printf_u3(t_flags *flags, unsigned int j, int i)
+void	ft_printf_u3(t_flags *flags, unsigned long j, int i)
 {
 	if (flags->widthbool == 1 && flags->precibool == 0)
 	{
@@ -86,7 +88,7 @@ void	ft_printf_u3(t_flags *flags, unsigned int j, int i)
 	ft_printf_u4(flags, j, i);
 }
 
-void	ft_printf_u4(t_flags *flags, unsigned int j, int i)
+void	ft_printf_u4(t_flags *flags, unsigned long j, int i)
 {
 	if (flags->widthbool == 0 && flags->precibool == 1)
 	{

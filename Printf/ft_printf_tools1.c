@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:57:58 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/23 21:41:46 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/26 17:51:04 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	ft_flagsinit(t_flags *flags)
 	flags->adv = 0;
 	flags->minusint = 0;
 	flags->itoahex = 0;
+	flags->max = 0;
+	flags->percent = 0;
+	flags->zeroarg = 0;
 }
 
 void	ft_putstr_a(char *s, t_flags *flags)

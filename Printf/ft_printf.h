@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/25 16:21:25 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/26 17:50:47 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct		s_flags
 	int				bytes;
 	int				minusint;
 	char			*itoahex;
+	int				max;
+	int				percent;
+	int				zeroarg;
 }					t_flags;
 int					ft_isdigit(int c);
 void				ft_putstr_a(char *s, t_flags *flags);
@@ -52,13 +55,15 @@ void				ft_printf_flags2b(t_flags *flags);
 void				ft_printf_types(const char *s, t_flags *flags);
 void				ft_printf_s(t_flags *flags);
 void				ft_printf_s1(t_flags *flags, char *s, int i);
+void				ft_printf_s1b(t_flags *flags);
 void				ft_printf_s2(t_flags *flags, char *s, int i);
 void				ft_printf_c(t_flags *flags);
 void				ft_printf_c1(t_flags *flags, int s, int i);
 void				ft_printf_c2(t_flags *flags, int s, int i);
 int					ft_printf(const char *s, ...);
 void				ft_printf_pc(t_flags *flags);
-int					ft_numofdigits(int i);
+void				ft_printf_pc1(t_flags *flags, char *s, int i);
+t_ull				ft_numofdigits(t_ull i);
 void				ft_printf_i(t_flags *flags);
 void				ft_printf_i1(t_flags *flags, int j, int i);
 void				ft_printf_i2(t_flags *flags, int j, int i);
@@ -67,12 +72,12 @@ void				ft_printf_i4(t_flags *flags, int j, int i);
 void				ft_printf_i5(t_flags *flags, int j, int i);
 void				ft_printf_i6(t_flags *flags, int j, int i);
 void				ft_printf_u(t_flags *flags);
-void				ft_printf_u1(t_flags *flags, unsigned int j, int i);
-void				ft_printf_u2(t_flags *flags, unsigned int j, int i);
-void				ft_printf_u3(t_flags *flags, unsigned int j, int i);
-void				ft_printf_u4(t_flags *flags, unsigned int j, int i);
-void				ft_printf_u5(t_flags *flags, unsigned int j, int i);
-void				ft_printf_u6(t_flags *flags, unsigned int j, int i);
+void				ft_printf_u1(t_flags *flags, unsigned long j, int i);
+void				ft_printf_u2(t_flags *flags, unsigned long j, int i);
+void				ft_printf_u3(t_flags *flags, unsigned long j, int i);
+void				ft_printf_u4(t_flags *flags, unsigned long j, int i);
+void				ft_printf_u5(t_flags *flags, unsigned long j, int i);
+void				ft_printf_u6(t_flags *flags, unsigned long j, int i);
 void				ft_printf_x(t_flags *flags, char c);
 void				ft_printf_x1(t_flags *flags, char *v, int i);
 void				ft_printf_x2(t_flags *flags, char *v, int i);
@@ -92,9 +97,9 @@ void				ft_putnbr_fd_ui(t_ull n, t_flags *flags, int fd);
 void				ft_putchar_fd(char c, t_flags *flags, int fd);
 void				ft_writeandbyte(t_flags *flags);
 int					ft_getdigits(t_ull n);
-char				*ft_itoahex(t_ull n);
-char				*ft_itoahexb(t_ull n, t_flags *flags, int dgt, t_ull nu);
-char				*ft_itoahexupper(t_ull n);
+char				*ft_itoahex(t_uli n);
+char				*ft_itoahexb(t_uli n, t_flags *flags, int dgt, t_uli nu);
+char				*ft_itoahexupper(t_uli n);
 void				ft_writezerox(t_flags *flags);
 
 #endif
