@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/25 22:39:50 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/26 19:15:58 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	ft_printf_u(t_flags *flags)
 {
 	int				i;
-	unsigned long	j;
+	unsigned int	j;
 
 	i = 0;
-	if (!(j = (va_arg(flags->valist, unsigned long))))
+	if (!(j = (va_arg(flags->valist, unsigned int))))
 		j = 0;
 	if (j < 0)
 	{
@@ -35,7 +35,7 @@ void	ft_printf_u(t_flags *flags)
 	ft_printf_u1(flags, j, i);
 }
 
-void	ft_printf_u1(t_flags *flags, unsigned long j, int i)
+void	ft_printf_u1(t_flags *flags, unsigned int j, int i)
 {
 	if (flags->widthbool == 0 && flags->precibool == 0)
 	{
@@ -46,7 +46,7 @@ void	ft_printf_u1(t_flags *flags, unsigned long j, int i)
 	ft_printf_u2(flags, j, i);
 }
 
-void	ft_printf_u2(t_flags *flags, unsigned long j, int i)
+void	ft_printf_u2(t_flags *flags, unsigned int j, int i)
 {
 	if (flags->widthbool == 1 && flags->precibool == 0)
 	{
@@ -72,7 +72,7 @@ void	ft_printf_u2(t_flags *flags, unsigned long j, int i)
 	ft_printf_u3(flags, j, i);
 }
 
-void	ft_printf_u3(t_flags *flags, unsigned long j, int i)
+void	ft_printf_u3(t_flags *flags, unsigned int j, int i)
 {
 	if (flags->widthbool == 1 && flags->precibool == 0)
 	{
@@ -88,7 +88,7 @@ void	ft_printf_u3(t_flags *flags, unsigned long j, int i)
 	ft_printf_u4(flags, j, i);
 }
 
-void	ft_printf_u4(t_flags *flags, unsigned long j, int i)
+void	ft_printf_u4(t_flags *flags, unsigned int j, int i)
 {
 	if (flags->widthbool == 0 && flags->precibool == 1)
 	{
@@ -100,6 +100,8 @@ void	ft_printf_u4(t_flags *flags, unsigned long j, int i)
 			ft_putzero(i, flags);
 			ft_putnbr_fd_ui(j, flags, 1);
 		}
+		if (flags->preci == 0 && j > 0)
+			ft_putnbr_fd_ui(j, flags, 1);
 	}
 	ft_printf_u5(flags, j, i);
 }

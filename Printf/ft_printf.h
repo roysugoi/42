@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/26 17:50:47 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/26 19:03:25 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ void				ft_printf_i4(t_flags *flags, int j, int i);
 void				ft_printf_i5(t_flags *flags, int j, int i);
 void				ft_printf_i6(t_flags *flags, int j, int i);
 void				ft_printf_u(t_flags *flags);
-void				ft_printf_u1(t_flags *flags, unsigned long j, int i);
-void				ft_printf_u2(t_flags *flags, unsigned long j, int i);
-void				ft_printf_u3(t_flags *flags, unsigned long j, int i);
-void				ft_printf_u4(t_flags *flags, unsigned long j, int i);
-void				ft_printf_u5(t_flags *flags, unsigned long j, int i);
-void				ft_printf_u6(t_flags *flags, unsigned long j, int i);
+void				ft_printf_u1(t_flags *flags, unsigned int j, int i);
+void				ft_printf_u2(t_flags *flags, unsigned int j, int i);
+void				ft_printf_u3(t_flags *flags, unsigned int j, int i);
+void				ft_printf_u4(t_flags *flags, unsigned int j, int i);
+void				ft_printf_u5(t_flags *flags, unsigned int j, int i);
+void				ft_printf_u6(t_flags *flags, unsigned int j, int i);
 void				ft_printf_x(t_flags *flags, char c);
 void				ft_printf_x1(t_flags *flags, char *v, int i);
 void				ft_printf_x2(t_flags *flags, char *v, int i);

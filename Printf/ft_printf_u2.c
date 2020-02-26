@@ -6,13 +6,13 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 23:06:59 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/25 20:24:42 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/26 19:02:09 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printf_u5(t_flags *flags, unsigned long j, int i)
+void	ft_printf_u5(t_flags *flags, unsigned int j, int i)
 {
 	if (flags->widthbool == 1 && flags->precibool == 1)
 	{
@@ -39,7 +39,7 @@ void	ft_printf_u5(t_flags *flags, unsigned long j, int i)
 	ft_printf_u6(flags, j, i);
 }
 
-void	ft_printf_u6(t_flags *flags, unsigned long j, int i)
+void	ft_printf_u6(t_flags *flags, unsigned int j, int i)
 {
 	if (flags->widthbool == 1 && flags->precibool == 1)
 	{
