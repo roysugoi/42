@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 00:29:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/25 22:48:15 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/29 13:11:52 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		ft_putnbr_fd(long long n, t_flags *flags, int fd)
 {
 	if (n == -2147483648)
-		ft_putstr_a("-2147483648", flags);
+		ft_putstr_a("2147483648", flags);
 	else if (n < 0)
 	{
 		ft_putchar_fd('-', flags, fd);

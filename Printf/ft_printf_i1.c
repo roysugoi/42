@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/26 18:58:17 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/29 15:41:50 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_printf_i(t_flags *flags)
 {
-	int i;
-	int j;
+	int			i;
+	long int	j;
 
 	i = 0;
 	if (!(j = (va_arg(flags->valist, int))))
 		j = 0;
-	if (j < 0)
+	if (j < 0 || j > 2147483647)
 	{
 		j = j * -1;
 		flags->minusint = 1;
@@ -37,7 +37,7 @@ void	ft_printf_i1(t_flags *flags, int j, int i)
 {
 	if (flags->widthbool == 0 && flags->precibool == 0)
 	{
-		if (flags->minusint == 1 && j >= 0 && j < 2147483647)
+		if (flags->minusint == 1 || j > 2147483647)
 			ft_writeandbyte(flags);
 		ft_putnbr_fd(j, flags, 1);
 	}
@@ -98,13 +98,12 @@ void	ft_printf_i4(t_flags *flags, int j, int i)
 		else
 		{
 			i = flags->preci - flags->length;
-			if (flags->minusint == 1 && j >= 0 && j < 2147483647)
+			if (flags->minusint == 1 || j > 2147483647)
 				ft_writeandbyte(flags);
 			if (flags->preci != 0)
 			{
 				ft_putzero(i, flags);
-				if (flags->preci != 0)
-					ft_putnbr_fd(j, flags, 1);
+				ft_putnbr_fd(j, flags, 1);
 			}
 		}
 	}
