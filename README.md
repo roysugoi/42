@@ -7,4 +7,4 @@ Libft             November 2019       Score: 100
 
 GetNextLine       November 2019       Score: 115
 
-Printf            February 2020       Score: TBA
+Printf            February 2020       Score: 100
