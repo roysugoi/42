@@ -6,29 +6,11 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 00:29:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/29 13:11:52 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/29 16:34:42 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void		ft_putnbr_fd(long long n, t_flags *flags, int fd)
-{
-	if (n == -2147483648)
-		ft_putstr_a("2147483648", flags);
-	else if (n < 0)
-	{
-		ft_putchar_fd('-', flags, fd);
-		ft_putnbr_fd(-n, flags, fd);
-	}
-	else if (n >= 10)
-	{
-		ft_putnbr_fd(n / 10, flags, fd);
-		ft_putchar_fd(n % 10 + '0', flags, fd);
-	}
-	else
-		ft_putchar_fd(n + '0', flags, fd);
-}
 
 int			ft_getdigits(t_ull n)
 {
@@ -70,7 +52,32 @@ char		*ft_itoahex(t_uli n)
 	return (str);
 }
 
-char		*ft_itoahexb(t_uli n, t_flags *flags, int dgt, t_uli nu)
+char		*ft_itoahexc(long n)
+{
+	int				digits;
+	long			numb;
+	char			*str;
+
+	numb = n;
+	digits = ft_getdigits(numb);
+	if (!(str = malloc((digits + 1) * sizeof(char))))
+		return (NULL);
+	str[digits--] = '\0';
+	if (numb == 0)
+		str[0] = '0';
+	while (numb > 0)
+	{
+		if (numb % 16 <= 9)
+			str[digits] = numb % 16 + '0';
+		else if (numb % 16 < 16)
+			str[digits] = numb % 16 + 'W';
+		numb /= 16;
+		digits--;
+	}
+	return (str);
+}
+
+char		*ft_itoahexb(t_ul n, t_flags *flags, int dgt, t_ul nu)
 {
 	char	*str;
 
@@ -99,10 +106,10 @@ char		*ft_itoahexb(t_uli n, t_flags *flags, int dgt, t_uli nu)
 	return ("0");
 }
 
-char		*ft_itoahexupper(t_uli n)
+char		*ft_itoahexupper(long n)
 {
 	int		digits;
-	t_ull	numb;
+	long	numb;
 	char	*str;
 
 	numb = n;

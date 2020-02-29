@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 11:01:39 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/29 15:41:23 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/29 16:38:27 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ void	ft_printf_pc2(t_flags *flags, char *s, int i)
 			ft_putblank(i - 1, flags);
 		}
 	}
+	ft_printf_pc3(flags, s, i);
+}
+
+void	ft_printf_pc3(t_flags *flags, char *s, int i)
+{
 	if (flags->widthbool == 0 && flags->precibool == 1)
 	{
 		if (flags->preci > flags->length)

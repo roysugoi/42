@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/25 16:44:11 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/29 16:18:05 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	ft_printf_p(t_flags *flags)
 {
 	int					i;
-	unsigned long int	j;
+	unsigned long		j;
 	char				*v;
 
 	i = 0;
-	j = (va_arg(flags->valist, unsigned long int));
+	j = (va_arg(flags->valist, unsigned long));
 	if (j >= ULLONG_MAX)
 		v = "ffffffffffffffff";
 	else

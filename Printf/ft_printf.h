@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 19:58:05 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/29 15:25:04 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/29 16:37:25 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef unsigned long int	t_uli;
 typedef unsigned long long	t_ull;
+typedef unsigned long		t_ul;
 
 typedef struct		s_flags
 {
@@ -64,6 +65,7 @@ int					ft_printf(const char *s, ...);
 void				ft_printf_pc(t_flags *flags);
 void				ft_printf_pc1(t_flags *flags, char *s, int i);
 void				ft_printf_pc2(t_flags *flags, char *s, int i);
+void				ft_printf_pc3(t_flags *flags, char *s, int i);
 t_ull				ft_numofdigits(t_ull i);
 void				ft_printf_i(t_flags *flags);
 void				ft_printf_i1(t_flags *flags, int j, int i);
@@ -99,8 +101,9 @@ void				ft_putchar_fd(char c, t_flags *flags, int fd);
 void				ft_writeandbyte(t_flags *flags);
 int					ft_getdigits(t_ull n);
 char				*ft_itoahex(t_uli n);
-char				*ft_itoahexb(t_uli n, t_flags *flags, int dgt, t_uli nu);
-char				*ft_itoahexupper(t_uli n);
+char				*ft_itoahexb(t_ul n, t_flags *flags, int dgt, t_ul nu);
+char				*ft_itoahexc(long n);
+char				*ft_itoahexupper(long n);
 void				ft_writezerox(t_flags *flags);
 
 #endif

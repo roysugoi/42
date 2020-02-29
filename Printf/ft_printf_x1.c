@@ -6,7 +6,7 @@
 /*   By: rvegas-j <rvegas-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 15:50:11 by rvegas-j          #+#    #+#             */
-/*   Updated: 2020/02/29 15:14:21 by rvegas-j         ###   ########.fr       */
+/*   Updated: 2020/02/29 16:15:08 by rvegas-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_printf_x(t_flags *flags, char c)
 	if (!(j = (va_arg(flags->valist, unsigned int))))
 		j = 0;
 	if (c == 'x')
-		v = ft_itoahex(j);
+		v = ft_itoahexc(j);
 	if (c == 'X')
 		v = ft_itoahexupper(j);
 	flags->length = ft_strlen(v);
